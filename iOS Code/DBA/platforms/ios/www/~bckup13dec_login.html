@@ -1,0 +1,1030 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<script src="js/cordova-2.4.0.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="js/create_order.js"></script>
+<script src="js/dba_odr.js"></script>
+<script src="js/catlog.js"></script>
+<script src="js/CORDOVA_GCM_script.js"></script>
+<script src="js/GCMPlugin.js"></script>
+<script src="js/SocialSharing.js"></script>
+<script src="js/Chart.js"></script>
+<script src="js/report.js"></script>
+<script src="js/phone_format.js"></script>
+
+<script type="text/javascript">
+	google.load("visualization", "1", {packages:["corechart"]});
+	//google.load("visualization", "1.1", {packages:["bar"]});
+   // google.setOnLoadCallback(drawSeriesChart);
+</script>
+
+<script src="dev/js/mobiscroll.jqmobi.js" type="text/javascript"></script>
+<script src="dev/js/mobiscroll.core.js" type="text/javascript"></script>
+
+<script src="dev/js/mobiscroll.datetime.js" type="text/javascript"></script>
+<script src="dev/js/mobiscroll.select.js" type="text/javascript"></script>
+
+<script src="dev/js/mobiscroll.jqm.js" type="text/javascript"></script>
+<script src="dev/js/mobiscroll.ios.js" type="text/javascript"></script>
+<script src="dev/js/mobiscroll.android.js" type="text/javascript"></script>
+<script src="dev/js/mobiscroll.android-ics.js" type="text/javascript"></script>
+<script src="dev/js/mobiscroll.wp.js" type="text/javascript"></script>
+
+<script src="dev/js/i18n/mobiscroll.i18n.de.js" type="text/javascript"></script>
+<script src="dev/js/i18n/mobiscroll.i18n.es.js" type="text/javascript"></script>
+<script src="dev/js/i18n/mobiscroll.i18n.fr.js" type="text/javascript"></script>
+<script src="dev/js/i18n/mobiscroll.i18n.hu.js" type="text/javascript"></script>    
+<script src="dev/js/i18n/mobiscroll.i18n.it.js" type="text/javascript"></script>
+<script src="dev/js/i18n/mobiscroll.i18n.no.js" type="text/javascript"></script>
+<script src="dev/js/i18n/mobiscroll.i18n.pt-BR.js" type="text/javascript"></script>
+<script src="dev/js/i18n/mobiscroll.i18n.zh.js" type="text/javascript"></script>
+
+<link href="dev/css/mobiscroll.core.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.jqm.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.android.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.android-ics.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.ios.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.sense-ui.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.wp.css" rel="stylesheet" type="text/css" />
+<link href="dev/css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+
+<title>CS</title>
+<style>
+@font-face { font-family: HelveticaNeue; src: url('HelveticaNeueLTStd-BdCn.otf'); } 
+@font-face { font-family: HelveticaLite; src: url('HelveticaNeueLTStd-Cn.otf'); } 
+@font-face { font-family: HelveticaMed; src: url('HelveticaNeueLTStd-MdCn.otf'); } 
+</style>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+
+</head>
+
+<body>
+<div class="transperent"></div>
+
+<div class="wrapper" id="login_div" >
+<div class="header">
+<div class="login-logo"><img src="images/logo.png" /></div>
+
+<div class="dba-logo">
+<img src="images/dba.png" />
+</div>
+</div>
+ 
+<div class="header-copy"></div>
+<!--Header part finish-->
+<div class="login">
+<h1 onclick="regis_cust('customer_register_div')">Create a DBA account</h1>
+<input type="email" placeholder="User ID" id="myusername" />
+<input type="password" placeholder="Password" id="mypassword" />
+<label style='width:40%;'><input type="checkbox" id="keep_login" checked />Keep me signed in</label>
+<label style="padding-top: 8px;width:40%;" onclick='forgot_password()'>Forgot Password?</label>
+<a href="#" onclick="login(); return false;">Sign In</a>
+</div><!--login close-->
+</div>
+
+<!-- //////////////login diva end///////////////////////////////////////////////// -->
+
+<div class="menu" id="myDiv" style="display:none" >
+<center>Menu</center>
+
+<ul>
+
+<li class='left_br' class="menu_border" id="menu_dashboard_div" onclick="menu_item('dashboard_div')" ><a href="#"><div class="text"><img src="images/dash-board.png" /><p>Dashboard</p></div></a>
+</li>
+
+<li class='left_br' id="menu_create_profile_div" onclick="menu_item('create_profile_div'); init_create_order();" ><a href="#"><div class="text"><img src="images/create-order.png" /><p>Create Order</p></div></a></li>
+
+<li class='left_br' id="menu_order_list_div" onclick="menu_item('order_list_div'); get_order_list2();" ><a href="#"><div class="text"><img src="images/order-list.png" /><p>Order List</p></div></a></li>
+
+<li class='left_br' id="menu_profile_setng_div" onclick="menu_item('profile_setng_div'); profile_default_setting();" ><a href="#"><div class="text"><img src="images/order-profile.png" /><p>Order Profile</p></div></a></li>
+
+<li class='left_br' id="menu_catalog_div1" onclick="menu_item('catalog_div1'); catlog_loading();" ><a href="#"><div class="text"><img src="images/catalog.png" /><p>Catalog</p></div></a></li>
+
+<li class='left_br' id="menu_notification_div" onclick="menu_item('notification_div'); notification()" ><a href="#"><div class="text"><img src="images/notification.png" /><p>Notifications<span class="not" id="not_num">1</span></p></div></a></li>
+
+<li class='left_br' id="menu_event_list_div" onclick="menu_item('event_list_div'); get_event()" ><a href="#"><div class="text"><img src="images/events.png" /><p>Marketing</p></div></a></li>
+
+<li onclick="share_app()"><a href="#"><div class="text"><img src="images/share.png" /><p>Share With Customer</p></div></a></li>
+<li onclick="share_app()"><a href="#"><div class="text"><img src="images/share.png" /><p>Share With Supplier</p></div></a></li>
+<li><a href="#"><div class="text"><img src="images/support.png" /><p>Support</p></div></a></li>
+<li onclick="change_password()" ><a href="#"><div class="text"><img src="images/support.png" /><p>Change Password</p></div></a></li>
+<li onclick="logout()" ><a href="#"><div class="text"><img src="images/support.png" /><p>Logout</p></div></a></li>
+</ul>
+
+</div>
+
+<!-- //////////////drawer div end///////////////////////////////////////////////// -->
+
+<div class="wrapper" id="dashboard_div" style="display:none">
+<div class="header">
+<div class="drop-new"><b>Dashboard</b>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+</div>
+
+<div class="header-copy"></div>
+<!--Header part finish-->
+
+<ul class="toggle">
+<li><a id="mtd" class="a-active" href="#" onclick="dash_bord_report(1); return false;">MTD</a></li>
+<li><a id="ytd" href="#" onclick="dash_bord_report(12); return false;">YTD</a></li>
+</ul>
+<ul class="info1">
+<li>
+<big id="dash_total_spend">$2350.23
+</big>
+<small id="nmtd1">Total Spend (MTD)
+</small>
+</li>
+
+<li>
+<big id="dash_save">$2350
+</big>
+<small id="nmtd2">Total Savings (MTD)
+</small>
+</li>
+
+<li>
+<big id="dash_max_supplier">$2350.23
+</big>
+<small id="dash_max_supplierid">Max. Spend with Supplier – Esh Foods
+</small>
+</li>
+
+<li>
+<big id="dash_max_pro_spend">$2350.23
+</big>
+<small id="dash_max_pro_id">Max. Spend with Product – Apple Pies
+</small>
+</li>
+</ul>
+<ul class="desc">
+<li onclick="menu_item('report1'); report1()">
+<b>Monthly movements</b><i><small>Last refreshed date – </small>09/22/2014
+</i>
+</li>
+<li onclick="menu_item('report2'); report2()">
+<b>Spend Analysis
+</b><i><small>Last refreshed date – </small>09/22/2014
+</i>
+</li>
+
+<li onclick="menu_item('bubble_report'); drawSeriesChart()">
+<b>Supplier Performance 
+</b><i><small>Last refreshed date – </small>09/22/2014
+</i>
+</li>
+
+<li>
+<b>Promotions & Events
+
+</b><i><small>Last refreshed date – </small>09/22/2014
+</i>
+</li>
+</ul>
+
+</div>
+
+<!-- ////////////// Dashboard div end///////////////////////////////////////////////// -->
+
+<div class="wrapper" id="create_profile_div" style="display:none" >
+<div class="header">
+
+<div class="drop-new"><b onclick="show_profile_list()" id="profile_name">No Profile</b><img src="images/drop.png" />
+<ul id="profile_list" class="drop-new-info">
+
+</ul>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+
+<ul class="filters">
+<li class="search_li1" ><img src="images/search.png"></li>
+<li><img id="add" src="images/add.png"></li>
+<div class="save-save-as">
+<li class="ok"><img src="images/ok.png"></li>
+<span><li><img onclick="update_personal_profile()" src="images/save.png"></li>
+<li><img onclick="save_profile()" src="images/save-as.png"></li></span>
+</div>
+<div class="short">
+<span><img src="images/dot1.png" /></span>
+<li onclick="sup_setng_confim()" ><img src="images/gear.png" /></li>
+<!--<li><img src="images/filter.png"></li>-->
+</div>
+</ul>
+</div>
+
+<div class="header-copy"></div>
+<div class="search_box search_box1" style="display:none;">
+   	<input id="search_co_txtbox" type=search results=5 autosave=some_unique_value name=s placeholder="search something..." onkeyup="search_co_box()">
+</div>
+<div class="sub_header search_box1" style="display:none;">
+        
+        <ul>
+         <li onclick='active_subcategory(this)' class="tab_active">
+				 <select >
+					
+					
+				</select>
+		 </li>
+		 
+          <li class="tab_inactive">
+						  
+		  </li>
+         </ul>
+        
+     </div>
+<!--Header part finish-->
+<table class="dba-profile" id="lis_div" onclick="$('#profile_list').hide();" >
+</table><!--dba-profile close-->
+
+<ul class="footer-down" id="footer_down">
+</ul>
+
+<div class='tooltip' id='tooltip' style="display:none" ><h1>Off Invoice</h1><p><b>Esh foods</b> Supplier is offering a discount of - $5 given a min. order Qty of 5</p></div>
+
+</div>
+<!-- ////////////// Create Profile div end ///////////////////////////////////// -->
+
+<div class="wrapper" id="customer_register_div" style="display:none">
+
+<div class="ss-header">
+		<div class="ss-title">Customer Registration Form</div>	
+			<div class="ss-headerbtnset">
+			<div class="ss-btncancel ss-headerbtn" onclick="onBackKeyDown();"></div>
+			<div class="ss-btnselect ss-headerbtn" onclick="cr() "></div>
+		</div>
+</div>
+
+
+<div class="header-copy"></div>
+<!--Header part finish-->
+
+
+<div class="form">
+<ul>
+<li>
+<p>Email*</p>
+<input id="eml" type="email" name="eml" onkeyup="usr_pop()" required=""/>
+</li>
+
+<li>
+<p>Username*</p>
+<input id="partner_user_id" type="email" name="username" required="" readonly="" />
+</li>
+
+<li>
+<p>First Name*</p>
+<input name="firstname" type="text" id="firstname" required="" /> 
+</li>
+
+<li>
+<p>Last Name*</p>
+<input name="lastname" id="lastname" type="text" required="">  
+</li>
+
+<li>
+<p>Business Name*</p>
+<input name="businessname" id="businessname" type="text" required="" />
+</li>
+
+<li>
+<p>Business Owner Name</p>
+<input name="businessownername" id="businessownername" type="text">  
+</li>
+
+<li>
+<div class="control-group" style="background:grey; color:black; padding: 5px;">
+
+<a href="#" style="color:#fff" onclick="tog(); return false;">Bill to Address</a>
+
+</div>
+<div id="shipto" style="display:none">
+							
+                       
+							
+                            <ul>
+                            <li><label class="control-label" for="inputError">Address Line1*</label>
+                            <input name="billtoaddress1" type="text" id="bill_ad1" required=""> </li>
+                           
+							
+					
+							
+							
+							<li><label class="control-label" for="inputError">Address Line2</label>
+							
+								<input name="billtoaddress2" type="text" id="bill_ad2"></li> 
+							 
+							
+							
+							<li>
+							<label class="control-label" for="inputError">Zip code*</label>
+							
+							<input id="bill_zip" type="number" name="billtozip" onkeypress="return IsNumeric(event,'error3');" ondrop="return false;" onpaste="return false;" onchange="zipcode('bill_zip')" required="">
+							<span id="error3" style="color: Red; display: none">* Input digits (0 - 9)</span>
+						 
+							
+							</li>
+                            
+							
+							<li>
+							<label class="control-label" for="inputError">City*</label>
+							
+								<input name="billtocity" type="text" id="bill_city" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">State*</label>
+							
+								<input name="billtostate" type="text" id="bill_state" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Country*</label>
+							
+								<input name="billtocountry" type="text" id="bill_country" value="United States" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Fax</label>
+							
+								<input name="billtofax" type="tel" id="bill_fax">  
+						
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Email</label>
+							
+								<input name="billtoemail" type="Email" id="bill_email" required="">  
+							
+						</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Phone*</label>
+							
+								
+								<input name="billtophone" type="tel" id="bill_phone">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Cell Phone*</label>
+							
+								<input name="billtocellphone" type="tel" id="bill_cellphone" required="">  
+							</li>
+                            </ul>
+                            
+                     
+							
+							</div>
+</li>
+
+<li>
+<div class="control-group" style="background:grey; color:black; padding: 5px;">
+							
+							 <a href="#" style="color:#fff" onclick="tog1(); return false;">Ship to Address</a>
+							 <input type="checkbox" onclick="fill_address()" style='width: 26%;'>
+							</div>
+<div id="billto" style="display:none">
+							<ul>
+                            <li>
+							<label class="control-label" for="inputError">Address Line1*</label>
+							
+								<input name="shiptoaddress1" type="text" id="ship_ad1" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Address Line2</label>
+							
+								<input name="shiptoaddress2" type="text" id="ship_ad2">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Zip code*</label>
+							
+								<input id="ship_zip" type="number" name="shiptozip" onkeypress="return IsNumeric(event,'error4');" ondrop="return false;" onpaste="return false;" onchange="zipcode('ship_zip')" required="">	
+							<span id="error4" style="color: Red; display: none">* Input digits (0 - 9)</span>
+							 
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">City*</label>
+							
+								<input name="shiptocity" type="text" id="ship_city" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">State*</label>
+							
+								<input name="shiptostate" type="text" id="ship_state" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Country*</label>
+							
+								<input type="text" name="shiptocountry" id="ship_country" value="United States" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Fax</label>
+							
+								<input name="shiptofax" type="tel" id="ship_fax">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Email</label>
+							
+								<input name="shiptoemail" type="email" id="ship_email" required="">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Phone*</label>
+							
+								<input name="shiptophone" type="tel" id="ship_phone">  
+							
+							</li>
+							
+							<li>
+							<label class="control-label" for="inputError">Cell Phone*</label>
+							
+								<input name="shiptocellphone" type="tel" id="ship_cellphone" required="" />  
+							</li>
+                            </ul>
+                            
+							
+							</div>
+</li>
+
+<li>
+<p>Default Notification Type *</p>
+<select id="defaultnotification" required="">
+	<option>App </option>
+	<option>Email</option>
+	<option>Phone</option>
+</select> 
+</li>
+<li>
+<p>DUNS</p>
+<input id="DUNS" type="text" />   
+</li>
+<li>
+<p>Federal Id Number*</p>
+<input id="federalidnumber" type="text"  required />    
+</li>
+
+<li>
+<p>website</p>
+<input id="website" type="text"  required /> 
+</li>
+
+</ul>
+
+
+</div>
+</div>
+<div class="overlay"></div>
+<div class="loading_img" style="display:none" >
+	<center><img src="images/loading.gif" ></center>
+</div>
+
+<div class="pp-modal" id="product_picker" style="display:none">
+	<div class="pp-header">
+		<div class="pp-title"> Select a product</div>
+		<div class="pp-headerbtnset">
+			<div class="pp-btncancel pp-headerbtn" onclick="$('.overlay').hide() 
+		$('#product_picker').hide(); "></div>
+			<div class="pp-btnselect pp-headerbtn" onclick="$('.overlay').hide() 
+		$('#product_picker').hide(); "></div>
+		</div>
+	</div>
+	<div class="pp-filter">
+		<div class="pp-filter-inner">
+			<div class="pp-category-filter">
+				Category<br>
+				<select id="category_id" onchange="get_subcat()" >
+					
+				</select>					
+			</div>
+			<div class="pp-subcategory-filter">
+				SubCategory<br>
+				<select id="subcat_id" >
+					<option value="" >All</option>
+				</select>
+
+			</div>
+			<div class="pp-search-filter">
+				Search by<br>
+				<input id="pp_searchtxt" type="text" placeholder="keyword" onkeyup="search_filter()"/>
+
+			</div>
+			<div class="pp-buttons-filter">
+				<div class="pp-button" id="pp-filter-button" onclick="product_filter()"></div>
+				<div class="pp-button" id="pp-clear-button" onclick="all_product()" ></div>
+			</div>
+		</div>
+	</div>
+	<div class="pp-productscontainer" id="product_view1" >
+		
+
+	</div>
+</div>
+
+<div class="ss-modal" id="setng_supplier" style="display:none">
+	<div class='ss-header'>
+		<div class='ss-title'>Supplier Settings</div>	
+		<div class='ss-headerbtnset'>
+		<div class='ss-btncancel ss-headerbtn' onclick="$('.overlay').hide(); 
+		$('#setng_supplier').hide(); " ></div>
+		<div class='ss-btnselect ss-headerbtn' onclick="product_list(); $('.overlay').hide(); 
+		$('#setng_supplier').hide(); " ></div></div>
+	</div>
+	<div class='ss-supplierscontainer' id="sup_list_view">
+		
+	</div>
+</div>
+
+<div class="ss-modal" id="setng_supplier_global" style="display:none">
+	<div class='ss-header'>
+		<div class='ss-title'>Global Supplier Settings</div>	
+		<div class='ss-headerbtnset'>
+		<div class='ss-btncancel ss-headerbtn' onclick="$('.overlay').hide(); 
+		$('#setng_supplier_global').hide(); " ></div>
+		<div class='ss-btnselect ss-headerbtn' onclick="product_list();$('.overlay').hide(); 
+		$('#setng_supplier_global').hide();" ></div></div>
+	</div>
+	<div class='ss-supplierscontainer' id="sup_list_view_global">
+		
+	</div>
+</div>
+
+<div class="pp-modal" id="product_picker2" style="display:none">
+	<div class="pp-header">
+		<div class="pp-title"> Select a product</div>
+		<div class="pp-headerbtnset">
+			<div class="pp-btncancel pp-headerbtn" onclick="$('.overlay').hide() 
+		$('#product_picker2').hide(); product_list(); "></div>
+			<div class="pp-btnselect pp-headerbtn" onclick="$('.overlay').hide() 
+		$('#product_picker2').hide();"></div>
+		</div>
+	</div>
+	<div class="pp-filter">
+		<div class="pp-filter-inner">
+			<div class="pp-category-filter">
+				Category
+				<select id="category_id2" onchange="get_subcat()">
+					
+				</select>					
+			</div>
+			<div class="pp-subcategory-filter">
+				SubCategory
+				<select id="subcat_id2">
+				
+				</select>
+
+			</div>
+			<div class="pp-search-filter">
+				Search by
+				<input type="text" placeholder="keyword"/>
+
+			</div>
+			<div class="pp-buttons-filter">
+				<div class="pp-button" id="pp-filter-button" onclick="product_filter()"></div>
+				<div class="pp-button" id="pp-clear-button" onclick="all_product()"></div>
+			</div>
+		</div>
+	</div>
+	<div class="pp-productscontainer" id="product_view2">
+		
+
+	</div>
+</div>
+
+<div class="wrapper" id="next_profile_div" style="display:none">
+
+
+<div class="header">
+
+<div class="drop-new"><b >Place Order</b>
+<ul class="drop-new-info">
+
+</ul>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+
+<ul class="filters">
+<li><img onclick="send_order()" src="images/place.png" /></li>
+<li><img onclick="cancel_send_order()" src="images/cance_order.png" /></li>
+</ul>
+
+</div>
+
+<div class="header-copy"></div>
+<!--Header part finish-->
+
+
+<ul class="ingrad" id="supplier_by_order">
+
+</ul>
+
+</div>
+
+<div class="wrapper" id="order_list_div" style="display:none">
+<div class="header">
+<div class="drop-new"><b>Order List</b>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+
+<ul class="filters">
+<li class="search_li"><img src="images/search.png"></li>
+</ul>
+</div>
+
+<div class="header-copy"></div>
+<!--search begins-->
+	<div class="search_box" style="display:none;">
+   	 <input id="search_order_txtbox" type=search results=5 autosave=some_unique_value name=s placeholder="search something..." onkeyup="search_order_box()" onchange="search_order_box()">
+    </div>
+<!--search ends-->
+
+<!--sub-header begins-->
+     <div class="sub_header">
+        
+        <ul>
+         <li onclick='active_subcategory(this)' class="tab_active">
+				 <select id="order_list_supplier_filter" onchange="get_order_list()">
+					<option value=''>All</option>
+					
+				</select>
+		 </li>		 
+          <li class="tab_inactive"></li>
+         </ul>
+        
+     </div>
+<!--sub-header ends-->
+
+<!--Header part finish-->
+<table class="order-list" id="order_list_table">
+
+</table><!--order list close-->
+
+<ul class="footer-down1" >
+<li class="active-footer-down1" onclick="order_active_li(1)" id="order_li1">ALL</li>
+<li id="order_li2" onclick="order_active_li(2)">PENDING</li>
+<li id="order_li3" onclick="order_active_li(3)">CONFIRMED</li>
+<li id="order_li4" onclick="order_active_li(4)">RECEIVED</li>
+<li id="order_li5" onclick="order_active_li(5)">CANCELLED</li>
+<li id="order_li6" onclick="order_active_li_event(6)">EVENT ORDER</li>
+</ul>
+
+</div>
+
+<div class="wrapper" id="order_detail_div" style="display:none">
+<div class="header">
+<div class="drop-new"><b id="detail_suplier_name">SNA Power</b>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+
+<ul class="filters">
+<li id="li_order_change" onclick="edit_order_save()"><img src="images/save-as.png"></li>
+<li id='li_truck_image'><img onclick="receive_order_turck()" src="images/truck.png"></li>
+<li id="li_cancel_order" onclick="cancel_order_turck()" ><img src="images/cance_order.png"></li>
+
+</ul>
+</div>
+
+<div class="header-copy"></div>
+
+<ul class="rdlt" id="detail_header_name">
+	
+</ul>
+
+<!--Header part finish-->
+<table class="dba-profile" id="order_detail_table">
+
+</table><!--dba-profile close-->
+
+</div>
+
+<div class="wrapper" id="profile_setng_div" style="display:none">
+  <div class="header">
+<div class="drop-new"><b>Profile Settings</b>
+</div>
+    <div id="menu" class="myButton"> <a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" />
+      <div class="line"><img src="images/fb.png" /></div>
+      </a> </div>
+    <ul class="filters">
+      <li onclick="menu_item('create_profile_div'); loading();" ><img src="images/add.png"></li>
+       <li class="search_li"><img src="images/search.png"></li>
+      </ul>
+      </div>
+<div class="header-copy"></div>
+<div class="search_box" style="display:none;">
+   	<input id="search_profile_txtbox" type=search results=5 autosave=some_unique_value name=s placeholder="search something..." onkeyup="search_profile_box()">
+</div>
+
+<!--Header part finish-->
+<table class="order_profile" id="profile_setng_table">
+  <tr>
+    <td></td>
+    <td>DEFAULT</td>
+    <td>ACTIVE</td>
+    <td>SETTINGS</a></td>
+    <td></td>
+  </tr>
+  
+</table>
+<!--order list close-->
+</div>
+
+<div class="wrapper" id="event_list_div" style="display:none">
+<div class="header">
+<div class="drop-new"><b>Event List</b>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+
+<ul class="filters">
+<li><img src="images/add.png"></li>
+<li><img src="images/filter.png"></li>
+<li><img src="images/search.png"></li>
+
+</ul>
+</div>
+
+<div class="header-copy"></div>
+<!--Header part finish-->
+<table class="order-list" id="event_list_table">
+
+</table><!--order list close-->
+
+</div>
+
+<div class="wrapper" id="event_order_div" style="display:none" >
+<div class="header">
+
+<div class="drop-new"><b >DBA</b>
+</div>
+
+<div id="menu" class="myButton">
+<a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" /><div class="line"><img src="images/fb.png" /></div></a>
+</div>
+
+<ul class="filters">
+<li><img onclick="send_event_order()" src="images/ok.png"></li>
+</ul>
+</div>
+
+<div class="header-copy"></div>
+
+<div>
+<select id="event_supplier">
+
+</select>
+</div>
+<!--Header part finish-->
+<table class="dba-profile" id="event_product_div" >
+</table><!--dba-profile close-->
+
+</div>
+
+<div class="wrapper" id="notification_div" style="display:none" >
+  <div class="header">
+    <div class="drop-new"><b>Notifications</b>
+</div>
+    <div id="menu" class="myButton"> <a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" />
+      <div class="line"><img src="images/fb.png" /></div>
+      </a> </div>
+    <ul class="filters">
+       
+    </ul>
+  </div>
+<div class="header-copy"></div>
+<!--Header part finish-->
+
+<div class="sub_header2">
+    <ul>
+        <li><label>From</label><select id="notify_last" onchange="notification()" ><option value="-1">All</option><option value="7">Last 7days</option><option value="30">Last 30days</option></select></li>
+		<li><label>Search:</label><input type="text" id="notify_search" onkeyup="notification_search()"></li>
+    </ul> 
+</div>
+
+<table class="order_profile" id="notification_table" >
+  <tr>
+    <td>ESH FOODS<b>9/22/2014</b></td>
+    <td>Order Confirmed-100122</td>
+    <td><a class="notification_delete" href="#"><img src="images/delete.png" /></a></td>
+  </tr>
+</table>
+<!--order list close-->
+</div>
+
+<div class="wrapper" id="catalog_div1" style="display:none" >
+<div class="header">
+    <div class="drop-new"><b>Catalog</b>
+</div>
+    <div id="menu" class="myButton"> <a href="#"><img style="width: 23px;margin-top: 14px;margin-left: -11px;" src="images/menu2.png" />
+     <div class="line"><img src="images/fb.png" /></div></a> </div>
+   </div>
+<div class="header-copy"></div>
+<div class="category_dba" >
+<ul id="ul_cat_gory">
+	 
+</ul>
+</div>
+</div>
+<div class="wrapper" id="catalog_div_next" style="display:none" >
+<div class="header">
+    <div class="drop-new"><b>Catalog</b>
+</div>
+    <div id="menu" class="myButton"> <a href="#"><img style="width: 23px;margin-top: 14px;margin-left: -11px;" src="images/menu2.png" />
+      <div class="line"><img src="images/fb.png" /></div>
+      </a> 
+     </div>
+    <ul class="filters">
+		<li class="search_li_catalog" ><img src="images/search.png"></li>
+	</li>
+	</ul>
+  </div>
+  
+<div class="filter-catalog">
+<div class="search_box search_box_catlog" style='top:0px;background: grey;display:none;'>
+   	<input id="search_catalog_txtbox" type=search results=5 autosave=some_unique_value name=s placeholder="search products..." onkeyup="search_catalog_txtbox()" >
+</div>
+<small>
+<label>Category</label>
+<form name="form" id="form">
+  <select id="catlog_category" onchange="catlog_subcat()" >
+    <option value="">Category</option>
+  </select>
+</form>
+</small>
+
+<small>
+<label>Sub Category</label>
+<form name="form" id="form">
+  <select id="catlog_subcat" onchange="catlog()" >
+    <option value="">Sub Category</option>
+  </select>
+</form>
+</small>
+
+<small>
+<label>Manufacturer</label>
+<form name="form" id="form">
+  <select id="catlog_manufact" onchange="catlog_brand()" >
+    <option value="">Manufacturer</option>
+  </select>
+</form>
+</small>
+
+<small>
+<label>Brand</label>
+<form name="form" id="form">
+  <select id="catlog_brand" onchange="catlog()" >
+    <option value="">Brand</option>
+  </select>
+</form>
+</small>
+</div><!--filter-catalog close-->
+
+<div class="filter-set"></div>
+
+<ul class="catalog" id="catalog_div" >
+
+</ul>
+</div>
+
+
+<div class="wrapper" id="report1" style="display:none" >
+<div class="header">
+    <div class="drop-new"><b>Report</b>
+</div>
+    <div id="menu" class="myButton"> <a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" />
+      <div class="line"><img src="images/fb.png" /></div>
+      </a> </div>
+</div>
+<div class="header-copy"></div>
+
+<div class="sub_header2">
+    <ul>
+        <li><label>Qty/Amount</label><br /><select id="bar_customer" onchange="report1()"><br /><option value="0">Quantity</option><option value="1">Amount</option></select></label></li>
+		<li><label>From:</label><select id="bar_from" onchange="report1()" ><option value="0" >MTD</option><option value="1" >YTD</option></select></li>
+    </ul> 
+</div>
+
+<div id="chart_div" style="margin-top:150px; width:100%; height:100%;"></div>
+
+</div>
+
+<div class="wrapper" id="report2" style="display:none" >
+<div class="header">
+    <div class="drop-new"><b>Report</b>
+</div>
+    <div id="menu" class="myButton"> <a href="#"><img style="width: 23px;
+margin-top: 14px;
+margin-left: -11px;" src="images/menu2.png" />
+      <div class="line"><img src="images/fb.png" /></div>
+      </a> </div>
+    
+  </div>
+<div class="header-copy"></div>
+
+<div class="sub_header2">
+    <ul>
+        <li><label>Qty/Amount </label><br /><select id="pie_customer" onchange="report2()"><br /><option value="0">My</option><option value="1">All</option></select></label></li>
+		<li><label>Date from:</label><input type="date" id="pie_from"></li>
+        <li><label>Date to:</label><input type="date" id="pie_to"></li>
+		<li onclick="report2()"><a href="#"><img src="images/tick.png" /></a></li>
+    </ul> 
+</div>
+
+<div id="piechart" style="margin-top:150px; width:100%; height:100%;"></div>
+<div id="piechart2" style="width: 100%; height:100%;"></div>
+
+<!--<ul>
+<canvas style="margin-top:50px; margin-bottom:50px;" id="piec2" height="450" width="600"></canvas>
+</ul>-->
+
+</div>
+
+<div class="wrapper" id="bubble_report" style="display:none" >
+	<div class="header">
+		<div class="drop-new"><b>Report</b>
+	</div>
+		<div id="menu" class="myButton"> <a href="#"><img style="width: 23px;
+	margin-top: 14px;
+	margin-left: -11px;" src="images/menu2.png" />
+		  <div class="line"><img src="images/fb.png" /></div>
+		  </a> </div>
+	</div>
+	<div class="header-copy"></div>
+	<div class="sub_header2">
+		<ul>
+			<li>
+			<label>Customer Data </label><br /><select id="buble_customer" onchange="drawSeriesChart()"><br /><option value="0">My Service</option><option value="1">All DBA</option></select>
+			</li>
+			<li>
+			<label>From:</label><select id="buble_from" onchange="drawSeriesChart()"><option value="0">Last 12 Month</option><option value="1">Last 6 Month</option></select>
+			</li>
+		</ul> 
+	</div>
+	<div id="series_chart_div" style="margin-top:150px; width:100%; height:100%">
+	</div>
+</div>
+
+</body>
+</html>

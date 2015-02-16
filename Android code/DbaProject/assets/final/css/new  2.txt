@@ -1,0 +1,13 @@
+<tr>
+<td class='one'><p>"+detail.productlabel+"<b>"+detail.packquantity+detail.unitofmeasure+"</b></p>
+<div class='drop-1'><center></center><div class='open-info-main1'></div></b></div></td>
+<td class='large-width'>
+<span onclick='event_qty_minus("+i+")' >-</span><input type='number' value='0' id='event_qty"+i+"' onkeyup='event_qty_up("+i+","+qty+")' /><span onclick='event_qty_plus("+i+","+qty+")'>+</span>
+</td>
+<td class='small-width'><u><img src='images/delete.png' /></u>
+</td>
+
+</tr>
+
+
+<tr><td class='one' >"+detail.productlabel+"<b>"+detail.packquantity+detail.unitofmeasure+"</b></td> <td><div class='open-info-main1'><li>abc</li> <li>abc</li></div></b></td><td><u><img src='images/delete.png' /></u><span><img onclick='event_qty_minus("+i+")' src='images/down.png' /></span><span><img src='images/up.png' onclick='event_qty_plus("+i+","+qty+")' /></span><input type='number' value='0' id='event_qty"+i+"' onkeyup='event_qty_up("+i+","+qty+")' /></td></tr>

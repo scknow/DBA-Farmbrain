@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tot Smart</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script src="main.js"></script>
+
+ <script src="jquery-1.7.2.js"></script>
+ <script src="jquery-ui.min.js"></script>
+
+
+
+
+<script>
+document.addEventListener("deviceready", onDeviceReady, false);
+		var dev=false,doc=false,stop;
+		var my_media=null;
+		function onDeviceReady() {
+									dev=true;
+									stop=  setInterval(Check(), 100);
+									
+                                 }
+		function Check()
+		{
+			if(doc==true&&dev==true)
+			{
+				alert("jpsji");
+                showConfirm();
+			}
+		}
+	   $(document).ready(function(){doc=true;});      
+       function onConfirm(buttonIndex) {
+           alert('You selected button ' + buttonIndex);
+       }
+
+// Show a custom confirmation dialog
+//
+function showConfirm() {
+    navigator.notification.confirm(
+                                   'You are the winner!', // message
+                                   onConfirm,            // callback to invoke with index of button pressed
+                                   'Game Over',           // title
+                                   ['Restart','Exit']         // buttonLabels
+                                   );
+}
+</script>
+
+</head>
+
+<body  >
+
+<div id='body1' class="container"></div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+a{ cursor:pointer}
+.bread{
+    float: left; 
+    margin: 10px;   
+    position: relative;
+	width: 94%;
+}
+   
+   
+   .step{
+    text-align: center;
+    border: none;
+    position: relative;
+}
+#badd{}
+#badd img{ float:right;}
+#daysofoperation input{ margin: 4px;}
+.active1 {
+font-size:15px;
+color: rgb(196, 196, 196) !important;
+background-size: 100% 100% !important;
+font-size:15px;
+}
+.active2{ background: url('../images/active1.png') !important; background-size: 120% 100% !important;
+font-size:15px;
+    color: rgb(71, 168, 33) !important; border-radius: 0 4px 4px 0 !important;}
+.bread ul{float: left;padding: 0;}
+.bread li{
+    float: left;
+	
+}
+.step a{
+    float: left;
+}
+
+
+.bread li a{background-position: right !important;
+    padding: 5px 20px !important;
+ text-decoration: none;
+color: #333;
+font-size: 12px;
+text-shadow: none;
+    padding: 5px 0;  
+    background: url('../images/steps.png');
+    background-size: 100% 100%;
+min-width: 80px;}
+.bread li:nth-child(1) a{
+    background-position: -20px;
+    background-size: 120% 100%;
+    border-radius: 4px;
+}
+.bread li:nth-child(2), .bread li:nth-child(3), .bread li:nth-child(4), .bread li:nth-child(5), .bread li:nth-child(6), .bread li:nth-child(7), .bread li:nth-child(8), .bread li:nth-child(9), .bread li:nth-child(10){
+    margin-left: -30px;
+}
+.bread li:nth-child(2) a, .bread li:nth-child(3) a, .bread li:nth-child(4) a, .bread li:nth-child(5) a, .bread li:nth-child(6) a, .bread li:nth-child(7) a, .bread li:nth-child(8) a, .bread li:nth-child(9) a, .bread li:nth-child(10) a{
+    background-size: 100% 100%;
+}
+
+#overlay{ background: black;
+position: fixed;
+width: 100%;
+height: 100%;
+left: 0;
+top: 0;opacity: 0.7; display:none;}
+.myTools, .myTools1, .myTools2, .myTools3, .myTools4, .myTools5{ float:left; margin-right:10px; padding-left: 10px; padding-top: 8px;}
+.myTools2, .myTools3, .myTools4, .myTools5 {position:relative;}
+.myTools2 input, .myTools3 input{ width:100px;float:left;}
+.myTools label, .myTools1 label, .myTools4 label, .myTools5 label{
+}
+.myTools2 label, .myTools3 label{ opacity:1;}
+.myTools2 i, .myTools3 i {
+font-style: normal;
+font-weight: bold;
+color: silver;
+width: 19px;
+height: 28px;
+line-height: 28px;
+position: absolute;
+right:0;
+top: 31px;
+font-size: 11px;
+cursor: pointer;
+/* background: yellow; */
+float: left;
+padding-left: 8px;
+}
+.dba-logo {
+float: right;
+width: 100px;
+margin-top: -10px;
+margin-left: 20px;
+}
+#upload_hover {
+background-color: #f3f3f3;
+position: fixed;
+margin: 0 auto;
+z-index: 1;
+left: 25%;
+display: none;
+width: 50%;
+top: 45%;
+webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+#container {
+background:#ededed;
+margin: 0 auto;
+width: 100%;
+}
+.close-up {
+margin-top: 30px;
+text-align: center;
+}
+#form {
+padding: 40px 40px 0px;
+}
+.close-n {
+padding: 2px 8px 3px;
+border: 1px solid rgb(170, 170, 170);
+}
+#msg{ font-size:22px;}
+#msg form{ margin-top:10px;}
+#msg label{
+float: left;
+padding: 5px 10px 0 0px;
+}
+#msg span{ margin-to:10px;}
+.bread li:last-child {
+margin-left: 0;
+}
+.bread li:last-child a {
+background: none;
+background-size: 120% 100%;
+border-radius: 4px;
+}

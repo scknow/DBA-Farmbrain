@@ -1,0 +1,125 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CS</title>
+<style>
+@font-face { font-family: HelveticaNeue; src: url('HelveticaNeueLTStd-BdCn.otf'); } 
+@font-face { font-family: HelveticaLite; src: url('HelveticaNeueLTStd-Cn.otf'); } 
+@font-face { font-family: HelveticaMed; src: url('HelveticaNeueLTStd-MdCn.otf'); } 
+</style>
+
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+
+<script>
+var toggle=0;
+
+$(function() {
+	 $(".one").click(function () {
+		 $('.open-info').slideToggle(100); 
+		 });
+		 
+		  $(".drop").click(function () {
+		 $('.open-info-main').slideToggle(100); 
+		 });
+		  $(".drop1").click(function () {
+		 $('.open-info-main1').slideToggle(100); 
+		 });
+		 
+     $(".myButton").click(function () {
+		 
+		 if(toggle==0){
+			 var effect = 'slide';
+
+
+    // Set the options for the effect type chosen
+	var options = { direction:'left'};
+  
+    
+    
+    // Set the duration (default: 400 milliseconds)
+    var duration = 500;
+
+    $('#myDiv').toggle(effect, options, duration);
+
+	
+	$( ".wrapper, .header" ).animate({
+	left: "70%",	
+	}, 500, function() {
+	// Animation complete.
+	});
+    
+
+	toggle=1;
+			 }
+else{
+	 var effect = 'slide';
+
+
+    // Set the options for the effect type chosen
+	var options = { direction:'left'};
+  
+    
+    
+    // Set the duration (default: 400 milliseconds)
+    var duration = 500;
+
+    $('#myDiv').toggle(effect, options, duration);
+	
+	$( ".wrapper, .header" ).animate({
+	left: "0",	
+	}, 500, function() {
+	// Animation complete.
+	});
+	
+	
+
+	toggle=0;
+	
+	
+	}
+	 
+});
+});
+</script>
+
+</head>
+
+<body>
+
+<!--Menu Begins-->
+<div class="menu" id="myDiv" style="display:none" >
+<center>Menu</center>
+<ul>
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Dashboard</p></div></a>
+</li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Create Order</p></div></a></li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Order List</p></div></a></li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Order Profile</p></div></a></li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Catalog</p></div></a></li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Notifications<span class="not">12</span></p></div></a></li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Events</p></div></a></li>
+
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Share</p></div></a></li>
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Support</p></div></a></li>
+<li><a href="#"><div class="text"><img src="images/dot.png" /><p>Account Sinc</p></div></a></li>
+
+
+</ul>
+</div>
+<!--Menu finish-->
+
+
+
+</body>
+</html>

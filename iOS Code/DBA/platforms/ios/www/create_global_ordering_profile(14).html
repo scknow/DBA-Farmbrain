@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<style>
+@font-face { font-family: HelveticaNeue; src: url('HelveticaNeueLTStd-BdCn.otf'); }
+@font-face { font-family: HelveticaLite; src: url('HelveticaNeueLTStd-Cn.otf'); }
+@font-face { font-family: HelveticaMed; src: url('HelveticaNeueLTStd-MdCn.otf'); }
+</style>
+<link rel="stylesheet" type="text/css" href="own.css" />
+<link rel="stylesheet" type="text/css" href="one.css" />
+<title>MY ORDERS</title>
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/dba.js"></script>
+
+
+
+<script>
+var toggle=0;
+
+$(function() {
+	
+	$(document).ready(
+    function(){
+        $("#add").click(function () {
+            $(".overlay").fadeIn("slow");
+			  $("#product_popup1").fadeIn("slow");
+        });
+        $("#button2").click(function () {
+            $("#two").slideToggle("fast");
+			 
+        });
+		$("#button").click(function () {
+            $("#one").slideToggle("fast");
+			 
+        });
+		$("#button3").click(function () {
+            $("#three").slideToggle("fast");
+			 
+        });
+		$("#button4").click(function () {
+            $("#four").slideToggle("fast");
+			 
+        });
+		$("#button5").click(function () {
+            $("#five").slideToggle("fast");
+			 
+        });
+		$("#new").click(function () {
+            $("#select").slideToggle("fast");
+			 
+        });
+		
+		$("#open").click(function () {
+            $("#new_div").slideToggle("fast");
+			 
+        });
+    });
+	
+   
+		 
+		 
+	
+     $(".myButton").click(function () {
+		 
+		 if(toggle==0){
+			 var effect = 'slide';
+
+
+    // Set the options for the effect type chosen
+	var options = { direction:'right'};
+   // Set the duration (default: 400 milliseconds)
+    var duration = 500;
+
+    $('#myDiv').toggle(effect, options, duration);
+
+	
+	$( ".wrapper, .header" ).animate({
+	right: "70%",	
+	}, 500, function() {
+	// Animation complete.
+	});
+    
+
+	toggle=1;
+			 }
+else{
+	 var effect = 'slide';
+
+
+    // Set the options for the effect type chosen
+	var options = { direction:'right'};
+  
+    
+    
+    // Set the duration (default: 400 milliseconds)
+    var duration = 500;
+
+    $('#myDiv').toggle(effect, options, duration);
+	
+	$( ".wrapper, .header" ).animate({
+	right: "0",	
+	}, 500, function() {
+	// Animation complete.
+	});
+	
+	
+
+	toggle=0;
+	
+	
+	}
+	 
+});
+});
+</script>
+
+<script>
+jQuery(document).ready(function(){
+    // This button will increment the value
+    $('.qtyplus').click(function(e){
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If is not undefined
+        if (!isNaN(currentVal)) {
+            // Increment
+            $('input[name='+fieldName+']').val(currentVal + 1);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+    // This button will decrement the value till 0
+    $(".qtyminus").click(function(e) {
+        // Stop acting like a button
+        e.preventDefault();
+        // Get the field name
+        fieldName = $(this).attr('field');
+        // Get its current value
+        var currentVal = parseInt($('input[name='+fieldName+']').val());
+        // If it isn't undefined or its greater than 0
+        if (!isNaN(currentVal) && currentVal > 0) {
+            // Decrement one
+            $('input[name='+fieldName+']').val(currentVal - 1);
+        } else {
+            // Otherwise put a 0 there
+            $('input[name='+fieldName+']').val(0);
+        }
+    });
+});
+</script>
+
+
+</head>
+
+<body>
+<div class="header">
+<p>ORDERING PROFILE</p>
+<div class="home"><a href="menu.html"><img src="images/home.png"></a></div>
+
+<div id="menu" class="myButton">
+<a href="#"><img src="images/menu2.png" /></a>
+</div>
+<a class="plus" id="add">+</a>
+</div>
+
+<div class="header-copy">
+</div>
+<!--Header part finish-->
+
+<div class="black" id="myDiv" style="display:none" >
+<center>Menu</center>
+<ul>
+<li><div class="text"><p><a href="create_global_ordering_profile(14).html">Order Profile</a></p>
+</div>
+</li>
+
+<li><div class="text"><div class="text"><center>Order</center><br />
+<a href="create_an_order.html">Create Order</a>
+<a href="Order_statuss.html">Order Status</a>
+</div>
+</li>
+
+<li><div class="text"><p><a href="select.html">Product Portfolio</a></p>
+</div>
+</li>
+
+<li><div class="text"><p><a href="promotion_events.html">View Events</a></p>
+</div>
+</li>
+
+<li><div class="text"><p><a href="notification.html">Notification</a></p>
+</div>
+</li>
+
+<li><div class="text"><center>Share</center><br />
+<a href="#">Share with Supplier</a>
+<a href="#">Share with Customer</a>
+</div>
+</li>
+
+<li><div class="text"><center><div class="log_out"><a href="#">Log Out</a></div></center></li>
+
+</ul>
+</div>
+
+<div class="wrapper">
+</div>
+
+
+<div class="main">
+					<div class="table">
+					<h3>Create a Ordering Profile</h3>
+                    
+                    		<div class="customer_group">
+							<table border="0">
+							<tbody>
+							<tr>
+							<td><label>Select a Profile</label></td>
+							<td>
+								<select name="category" id="category">
+									 <option><a href="create_global_ordering_profile(14).html">Create New Order Profile</a></option>
+									 <option><a href="global_order_profiles.html">Global Order Profile</a></option>
+									 <option><a href="#">Global Order Profile 1</a></option>
+									 <option><a href="#">Global Order Profile 2</a></option>
+									 <option><a href="personal_order_profiles.html">Personal Order Profile</a></option>
+									 <option><a href="#">Personal Order Profile 1</a></option>
+									 <option><a href="#">Personal Order Profile 2</a></option>
+									 </select>
+										</td>
+										</tr>
+							
+							<tr>
+							<td><label>Profile Name</label></td>
+                            <td><input type="text" name="Profile Name" ></td>
+							</tr>
+                          
+                            
+                          	</tbody>
+                            </table>
+</div><!--customer_group_closed-->
+                            
+							<div class="settings">
+                            
+								<p id="button">Global Supplier Settings</p>
+                            	<div class="drop_down" id="one" style="display:none;">
+                                <ul>
+                                    <li><b><input type="checkbox"/>Supplier1</b><i><input type="number"></i></li>
+                                    <li><b><input type="checkbox"/>Supplier2</b><i><input type="number"></i></li>
+                                    <li><b><input type="checkbox"/>Supplier3</b><i><input type="number"></i></li>
+                                    <li><b><input type="checkbox"/>Supplier4</b><i><input type="number"></i></li>
+                                    </ul>
+</div><!--drop_down closed-->
+</div><!----settings-->
+<div id="lis_div" >
+</div>
+								
+                               <div class="save">
+							   <div class="place-o">
+							   
+							   <div class="place-f">
+							   <a>Save</a>
+							   </div>
+							   
+							   <div class="place-s">
+							   <a id="open">Save As</a>
+							   <div class="inner_div" id="new_div" style="display:none;">
+								<ul>
+								<li><a href="#">Save</a></li>
+								<li><a href="#">Save As</a></li>
+                                <li><a href="create_an_order.html">Save & Place order</a></li>
+								</ul>
+								</div>
+							   </div>
+							   
+							   </div>
+							   
+							
+
+</div><!--save closed-->
+
+
+</b></b></div><!--table closed--><b><b>
+</b></b></div>
+
+
+<div class="overlay">
+</div>
+<div class="product_popup" id="product_popup1">
+
+<div class="header header-pop">
+<p>SELECT A PRODUCT</p>
+<div class="back">
+<a href="#" onclick="$('.overlay').hide(); $('.product_popup').hide(); return false;">Back</a>
+</div><!--back closed-->
+<div class="done">
+			<a href="#" onclick="$('.overlay').hide(); $('.product_popup').hide(); product_list(); return false;" >Done</a>
+			</div><!--done closed-->
+			</div><!--content closed-->
+
+<div class="header-copy"></div>
+
+<!-------header finish-------->
+
+
+
+
+<div class="main">
+    <div class="popup">
+        <ul>
+            <li id="filter_cate">
+                <select id="category_id">
+					<option value="">ALL</option>
+                </select>
+            </li>
+            <li id="filter_subcat" >
+                <select id="subcat_id">
+                    <option value="">ALL</option>
+                </select>
+            </li>
+					 
+			<li>
+				<input type="text" placeholder="Search" id="srch" />
+			</li>
+			<li>
+				<a href="#" onclick="product_filter()" >Filter</a>
+			</li>
+        </ul>
+    </div><!--popup-header-->           
+    <div id="product_list">                 
+		<div class="description">
+			<div class="left">
+				<input type="checkbox" />
+				<img src="images/fruit_2.jpg"/>
+				<small>Product1</small>
+				<label>Product description</label>
+			</div>
+		</div><!--product_description-->
+		<div class="wrap_product">
+		</div>
+    </div>                
+</div><!--table closed-->
+</div><!--main closed-->
+
+<div class="product_popup" id="product_popup2" >
+
+<div class="header header-pop">
+<p>SELECT A PRODUCT</p>
+<div class="back">
+<a href="#" onclick="$('.overlay').hide(); $('.product_popup').hide(); return false;">Back</a>
+</div><!--back closed-->
+<div class="done">
+			<a href="#" onclick="$('.overlay').hide(); $('.product_popup').hide(); product_list(); return false;" >Done</a>
+			</div><!--done closed-->
+			</div><!--content closed-->
+
+<div class="header-copy"></div>
+
+<!-------header finish-------->
+
+
+
+
+<div class="main">
+    <div class="popup">
+        <ul>
+            <li id="filter_cate">
+                <select id="category_id1">
+					<option value="">ALL</option>
+                </select>
+            </li>
+            <li id="filter_subcat" >
+                <select id="subcat_id1">
+                    <option value="">ALL</option>
+                </select>
+            </li>
+					 
+			<li>
+				<input type="text" placeholder="Search" id="srch" />
+			</li>
+			<li>
+				<a href="#" onclick="product_filter()" >Filter</a>
+			</li>
+        </ul>
+    </div><!--popup-header-->           
+    <div id="product_list2">                 
+		<div class="description">
+			<div class="left">
+				<input type="checkbox" />
+				<img src="images/fruit_2.jpg"/>
+				<small>Product1</small>
+				<label>Product description</label>
+			</div>
+		</div><!--product_description-->
+		<div class="wrap_product">
+		</div>
+    </div>                
+</div><!--table closed-->
+</div><!--main closed-->
+</body>
+</html>

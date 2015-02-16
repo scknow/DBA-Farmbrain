@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0px;}
+*{padding:0px;}
+
+ body {margin: 0; padding: 0; min-width: 100%!important; font-family:calibri; font-size:14px;}
+        .content {width: 100%; max-width: 600px;}
+		
+
+.header {width:100%; float:left; background:#f3f3f3; box-shadow: 0 1px 2px rgb(160, 160, 160);}
+
+.header h1 {width: auto;
+float: left;
+padding-top: 31px;
+font-size: 30px;
+color: #707070;}
+
+.table-left {width:48%; float:left;}
+
+.header td img{padding: 12px 6px; float:left; width:80px;}
+
+.table-left h3 {font-size: 21px;
+padding: 20px 12px;
+color: #a1b226;
+text-shadow: 0 1px 2px rgb(233, 233, 233);}
+
+.table-left big {font-size: 15px;
+padding: 0 10px 0;
+display: block;
+font-weight: 600;}
+
+.table-left p {padding: 10px;}
+
+.table-right {width: 49%;
+float: left;
+background: #F1F6CA;
+border: 1px solid silver;
+margin-top: 25px;}
+
+.table-right td {width:100%; float:left;}
+
+.table-right td b {width: 50%;
+float: left;
+clear: both;
+padding: 10px 0 10px 5%;}
+
+.table-right td p {width: 40%;
+float: left;
+padding: 10px 0 10px 5%;}
+
+.table-right td h3 {padding: 10px 10px 4px;
+font-size: 12px;
+font-weight: bold;
+color: #555555;} 
+
+.table-right td h2 {font-size: 14px;
+padding-left: 4%;
+padding-top: 6px;
+width: auto;
+float: left;} 
+
+.table-right td h4 {font-size: 13px;
+padding: 6px 0 13px 4%;
+width: auto;
+float: left;
+color: #7C8A16;}
+
+.account {width: 49%; float: left;}
+
+.account a {width: 75%;
+margin: 20px auto;
+display: block;
+background: #a1b226;
+padding: 10px 0;
+border-radius: 3px;
+color: white;
+text-decoration: none;
+text-align: center;}
+
+
+.sub-footer {width: 100%;
+float: left;
+margin: 20px 0 10px;}
+
+.sub-footer td {text-align: center;
+font-size: 12px;
+font-weight: 700;
+color: rgb(33, 32, 32);}
+
+.footer {width: 100%;
+background: rgb(71, 71, 71);}
+
+.footer td {padding:10px; color:white; font-size: 11px;}
+
+

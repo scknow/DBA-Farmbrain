@@ -1,0 +1,2 @@
+rid, supplierid, supplierbusinessname, customerid, customerbusinessname, minimumordervalue, ordertolerancevalue, approve
+,3,Sna Test,9, Test user,10,10,0

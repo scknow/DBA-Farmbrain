@@ -1,0 +1,2 @@
+id, productid, upc, supplierid, productname, customergroup, customerid, minodrqty, datefrom, dateto, incrementodrqty, price, active, Error Description
+, 3,  abc,  vdh, -1, -1, 100,  2014-09-17,  2014-09-26, 10, 100, 1, Date from can\'t be less than or equal to today\'s date, 

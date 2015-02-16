@@ -1,0 +1,682 @@
+<head>
+<script src="jquery.js"></script>
+<script src="local.js"></script>
+
+<title>Resturants</title>
+
+<style>
+
+@charset "utf-8";
+* {
+    margin: 0 auto;
+    padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+}
+
+@font-face {
+    font-family: "Charlemagne Std";
+    src: url(http://antloc.com/restapps/font/CharlemagneStd-Bold.otf) format("truetype");
+}
+li {
+    list-style: none outside none;
+}
+a {
+    text-decoration: none;
+}
+body {
+
+	background:url(http://restaurantapps.co/admin/upload/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family:Charlemagne Std;
+    
+	
+}
+.main {
+}
+.front {
+}
+.front img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 3%;
+	padding-bottom: 5%;
+    width: 65%;
+}
+.front ul {
+    width: 90%;
+}
+.front ul li {
+    
+	
+	background: url("http://antloc.com/restapps/images/li-img.png") no-repeat #000000;
+	background-position:14px center;
+	background-size:35px auto;
+    border: 1px solid hsl(0, 0%, 75%);
+    border-radius: 0px;
+    color: #ffffff;
+    margin: 5px 0;
+    padding: 20px 0;
+    text-align: center;
+	opacity: 0.9;
+	font-size:16px;
+}
+.front ul li:hover {
+    background: url("http://antloc.com/restapps/images/li-img.png") no-repeat #000000;
+	background-position:6px center;
+	background-size:35px auto;
+    cursor: pointer;
+	color:#ffffff;
+}
+.header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+}
+.header img {
+    float: left;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+	margin-top: 3px !important;
+    width: 32px !important;
+	position:absolute;
+}
+.fix {
+    position: relative !important;
+    z-index: 0 !important;
+}
+.fix img {
+}
+.menu {
+}
+.menu img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.menu ul {
+    width: 100%;
+}
+.menu ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+	background-size: 16px;
+    padding:23px 0;
+    text-align: center;
+	font-size:20px;
+}
+.menu ul li:hover {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 100%, 40%);
+    cursor: pointer;
+}
+.item {
+}
+.item img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.item ul {
+    width: 100%;
+}
+.item ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 16px 0;
+    text-align: center;
+    width: 100%;
+}
+.item ul li:hover {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 100%, 40%);
+    cursor: pointer;
+}
+.active {
+    background:95% hsl(0, 100%, 40%) !important;
+	padding:20px 0 !important;
+	border-top:1px solid white;
+	font-size:20px;
+}
+.item ul ul {
+}
+.item ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+.item ul ul li:hover {
+    background: none repeat scroll 0 0 hsla(0, 0%, 0%, 0.7);
+}
+.item ul ul li div {
+    float: left;
+    padding: 0 13px;
+    width: 100px;
+}
+.item ul ul li div img {
+    width: 100%;
+}
+.item ul ul li h3 {
+}
+.item ul ul li p {
+font-size: 14px;
+font-family:arial;
+}
+.item-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.item-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+}
+.item-header img {
+	float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+}
+.c-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.c-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+}
+.c-header img {
+	float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+}
+.fix {
+    position: relative !important;
+    z-index: 0 !important;
+}
+.fix img {
+}
+.contact {
+}
+.contact img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.info {
+    background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+	float: left;
+	padding: 3% 4% 1%;
+	top: 0;
+	width: 92%;
+}
+.info h3 {
+font-size:15px;
+}
+.info p {
+font-size:14px;
+}
+.info span {
+    float: left;
+    padding: 2px 0;
+}
+.info span img {
+    float: left;
+	padding: 8px 7px 7px 0;
+	width: 23px;
+}
+.info b {
+    float: left;
+    padding-top: 12px;
+	font-size:13px;
+}
+.hours {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    bottom: 0;
+    clear: both;
+    float: left;
+    padding-bottom: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.hours h3 {
+    clear: both;
+    color: hsl(0, 0%, 100%);
+    display: block;
+    float: left;
+    padding: 4% 5%;
+    width: 90%;
+}
+.hours ul {
+}
+.hours ul li {
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 8px 5% 0;
+    width: 90%;
+}
+.hours ul li i {
+    float: right;
+}
+.hours ul li b {
+    float: left;
+}
+.c {
+    overflow: hidden;
+    width: 100%;
+}
+.c img {
+    padding: 5% 0;
+    width: 100%;
+}
+.red-bg {
+    background: none repeat scroll 0 0 hsl(0, 100%, 40%);
+    float: left;
+    width: 100%;
+}
+.events {
+}
+.e-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.e-header img {
+    float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+}
+.e-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+}
+.table 
+{
+    color: hsl(0, 0%, 100%);
+    display: block;
+    float: left;
+    margin: 5%;
+    width: 90%;
+}
+.table tbody{
+    float: left;
+    width: 100%;
+}
+.table tr {
+    width: 100%;
+    float: left;
+    margin: 10px 0;
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+}
+.table tr td 
+{
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+.table tr td img 
+{
+    padding: 10px;
+    width: 21%;
+    display: block;
+    min-width: 122px;
+}
+.table tr td h3 {
+    background: none repeat scroll 0 0 hsl(0, 1%, 27%);
+    color: hsl(188, 95%, 57%);
+    padding: 3% 10%;
+    width: 80%;
+}
+.table tr td p {
+    background: none repeat scroll 0 0 hsl(0, 1%, 45%);
+    padding: 3% 10%;
+    width: 80%;
+}
+.table tr td span {
+    background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+    color: hsl(360, 100%, 40%);
+    float: left;
+    font-size: 20px;
+    padding: 6% 10%;
+    width: 80%;
+}
+.about-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.about-header img {
+    float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+}
+.about-header p {
+    padding-top: 7px 0;
+	text-align:center;
+	font-size: 20px;
+}
+.about {
+}
+.about span {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    float: left;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 100%;
+}
+.about span img {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+}
+.content-about {
+    padding-top: 15px;
+    width: 90%;
+}
+.content-about p {
+    color: hsl(0, 0%, 100%);
+    line-height: 25px;
+    padding-bottom: 22px;
+}
+.tip_cal
+{
+	display: block;
+	background:hsl(0, 100%, 40%) !important;
+	height: 100%;
+}
+.tip {
+    padding-top: initial;
+	position: absolute;
+	width: 100%;
+	height: 40%;
+	top: 16%;
+}
+.tip img {
+    display: block;
+    margin: 0 auto 30px;
+    max-width: 500px;
+    width: 90%;
+}
+.tip label,.tip input {
+	background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+	clear: both;
+	color: hsl(0, 0%, 98%);
+	display: block;
+	margin: 0 auto 30px;
+	padding: 30px 5px 30px 25px;
+	position: relative;
+	width: 85%;
+}
+.tip label span,.tip label input {
+	right: 10px;
+	background: none repeat scroll 0 0 rgb(243, 243, 243);
+	color: hsl(0, 0%, 0%);
+	padding: 3px;
+	position: absolute;
+	right: 4px;
+	text-align: center;
+	top: 4px;
+	border: none;
+}
+.header-top-set {
+    height: 59px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+
+<div id='loading-gif' style='z-index:99999;position:fixed;background-color:black;opacity:0.5;display:none;height:100%;width:100%'>
+	</div>
+	<div id='loadings' style='z-index:999999;position:absolute;display:none;height:100%;width:100%'>
+		<img src='images/loading.gif' style='width:40%;'>
+	</div>
+	
+	
+
+<div class="front">
+<img src="http://restaurantapps.co/admin/upload/plate.png" />
+<ul>
+<li onclick='add_in_array("menu")'>OUR MENU</li>
+<li onclick='add_in_array("contact")'>MAPS/DIRECTIONS</li>
+<li onclick='add_in_array("events")'>EVENTS</li>
+<li onclick='add_in_array("tip_cal")'>TIP CALCULATOR</li>
+<li onclick='add_in_array("about")'>ABOUT US</li>
+</ul>
+</div><!--front close-->
+
+<div class="item" style='display:none'>
+<div class="item-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>MENU ITEM</p>
+</div>
+<div class="item-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>MENU ITEM</p>
+</div>
+<img src="http://antloc.com/restapps/images/item.png" id='cat_img'/>
+<ul>
+<li class="active" id='insert_name'>LUNCH</li>
+<ul class='item_list'>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3><p>Lorem ipsum dummy content for type setting</p>
+</li>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3><p>Lorem ipsum dummy content for type setting</p>
+</li>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3><p>Lorem ipsum dummy content for type setting</p>
+</li>
+
+</ul>
+
+</ul>
+</div><!--front close-->
+
+<div class="menu" style='display:none'>
+<div class="header">
+<img src="http://antloc.com/restapps/images/li-img.png" onclick='back_button()'/><p>MENU CARD</p>
+</div>
+<div class="header fix">
+<img src="http://antloc.com/restapps/images/li-img.png" onclick='back_button()'/><p>MENU CARD</p>
+</div>
+<img src="http://antloc.com/restapps/images/menu-bg.png" />
+<ul id='category'>
+<li>LUNCH</li>
+<li>MENU</li>
+<li>DESSERTS</li>
+<li>BEVERAGES</li>
+</ul>
+</div><!--front close-->
+
+<div class="events" style='display:none'>
+<div class="e-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>EVENTS</p>
+</div>
+
+<div class="e-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>EVENTS</p>
+</div>
+
+
+
+
+<table class="table" width="90%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+	<h3>MUSICAL NIGHT</h3>
+	<p> Starts @ 9:00 Pm
+	   25th January</p>
+	   <span>Save Event to Calender</span>
+	   </td>
+	  </tr>
+	   <tr>
+		<td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+<h3>MUSICAL NIGHT</h3>
+<p> Starts @ 9:00 Pm
+   25th January</p>
+   <span>Save Event to Calender</span>
+   </td>
+  </tr>
+   <tr>
+    <td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+<h3>MUSICAL NIGHT</h3>
+<p> Starts @ 9:00 Pm
+   25th January</p>
+   <span>Save Event to Calender</span>
+   </td>
+  </tr>
+   <tr>
+    <td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+<h3>MUSICAL NIGHT</h3>
+<p> Starts @ 9:00 Pm
+   25th January</p>
+   <span>Save Event to Calender</span>
+   </td>
+  </tr>
+</table>
+
+
+
+</div><!--front close-->
+
+<div class="contact" style='display:none'>
+<div class="fixed">
+<div class="c-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>CONTACT US</p>
+</div>
+<div class="info">
+<h3>Barbequeue</h3>
+<p>My Restaurant, 123 The High Street, Walton, Surrey, KT8 2LR  - 0208  328 1709 
+</p><span><img src="http://antloc.com/restapps/images/contact.png" /> <b>+4476543210</b></span>
+</div>
+</div>
+
+<div class="c-header fix">
+<img src="images/back.png" onclick='back_button()'/><p>CONTACT US</p>
+</div>
+
+<div class="info fix">
+<h3>Barbequeue</h3>
+<p>My Restaurant, 123 The High Street, Walton, Surrey, KT8 2LR  - 0208  328 1709 </p>
+</div>
+
+
+
+<div class="hours">
+<h3>HOURS:-</h3>
+<ul>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+</ul>
+</div>
+<div class="hours fix c">
+<img src="http://maps.googleapis.com/maps/api/staticmap?center=53.5500,2.4333&zoom=15&size=600x500&markers=color:red%7Clabel:S%7C53.5500,2.4333&sensor=false" onclick='open_map()'/>
+</div>
+
+</div><!--front close-->
+
+<div class="about" style='display:none;'>
+<div class="about-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>ABOUT</p>
+</div>
+
+<div class="about-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>ABOUT</p>
+</div>
+
+<span><img src="http://antloc.com/restapps/images/momo.png" /></span>
+<div class="content-about">
+
+<p>Four simple words comprise the Ninety Nine Restaurant&rsquo;s mission statement: &ldquo;A Passion to Serve.&rdquo; But a mission statement is worthless if it&rsquo;s not supported by action &ndash; and this one definitely is! Everyone at the Ninety Nine</p>
+</div>
+</div>
+
+<div class='tip_cal' style='display:none'>
+<div class="e-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>Tip Calcualtor</p>
+</div>
+
+<div class="e-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>Tip Calcualtor</p>
+</div>
+<div class="header-top-set">
+.
+</div><!--header-top-setclose-->
+<div class="tip">
+<label>Total bill(in &euro;)<input type='tel' name='tot_bill' id='tot_bill' style='padding: 24px;
+width: 40%;font-size: 20px;' placeholder='1000'></label>
+<label>Tip (in %)
+<input type='text' name='tot_bill' id='tot_tip_percentage' style='padding: 24px;width: 28%;font-size: 20px;float: left;right: 12.5%;' placeholder='5%' disabled>
+<span style='width: 10%;float: left;margin-right: 0px;margin-top: 31PX;border-top: 1PX SOLID rgb(158, 0, 0);font-size: 28px;font-weight: bolder;' onclick='calculate("-")'>-</span>
+<span style='width: 10%;height:31px;float: left;margin-top:0;font-size:28px;' onclick='calculate("+")'>+</span></label>
+
+<label>Total with Tip <input type='text' name='tot_bill' id='total_tip' style='padding: 24px;width: 40%;font-size: 20px;' placeholder='&euro;1050'></label>
+
+</div><!--tip close-->
+</div>
+
+</div><!--main close-->
+</body>
+</html>

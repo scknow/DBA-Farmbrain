@@ -1,0 +1,2 @@
+eventid, eventname, startdate, enddate, customergiveaway, supplierchargeable, maxquantity, ProductId, Error Description,
+4, Test event,  2014-09-30,  2014-10-30,10,  tree,20,  1&3, Event start Date can\'t be less than or equal to today\'s date OR end date can\'t be less than start date, 

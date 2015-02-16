@@ -1,0 +1,1666 @@
+<head>
+
+<!-- Include my Javascript routines -->
+<script type="text/javascript" charset="utf-8" src="GCMPlugin.js"></script>
+<script type="text/javascript" charset="utf-8" src="CORDOVA_GCM_script.js"></script>
+<script type="text/javascript" charset="utf-8" src="cdv-plugin-fb-connect.js"></script>
+<script type="text/javascript" charset="utf-8" src="facebook_js_sdk.js"></script>
+<script src="jquery.js"></script>
+<script src="local.js"></script>
+
+<title>Resturants</title>
+
+<style>
+
+@charset "utf-8";
+* {
+    margin: 0 auto;
+    padding: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);  
+   
+}
+
+li {
+    list-style: none outside none;
+}
+a {
+    text-decoration: none;
+}
+body {
+
+	background:%%container%% no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family:century gothic;
+  width:100%;
+  height:100%;
+}
+.main {
+}
+.front {
+}
+.front img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 3%;
+	padding-bottom: 5%;
+    width: 65%;
+}
+.front ul {
+    width: 90%;
+}
+.front ul li {
+    
+	
+	background: url("http://antloc.com/restapps/images/li-img.png") no-repeat %%li_background%%;
+	background-position:14px center;
+	background-size:35px auto;
+    border: 1px solid hsl(0, 0%, 75%);
+    border-radius: 0px;
+    color: %%font-color%%;
+    margin: 5px 0;
+    padding: 20px 0;
+    text-align: center;
+	opacity: 0.9;
+	font-size:16px;
+}
+.front ul li:hover {
+    background: url("http://antloc.com/restapps/images/li-img.png") no-repeat %%li_hover%%;
+	background-position:6px center;
+	background-size:35px auto;
+    cursor: pointer;
+	color:%%font_color_hover%%;
+}
+.header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+}
+.header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+}
+.header img {
+    float: left;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+	margin-top: 3px !important;
+    width: 32px !important;
+	position:absolute;
+	z-index: 11;
+}
+.fix {
+    position: relative !important;
+    z-index: 0 !important;
+}
+.fix img {
+}
+.menu {
+}
+.menu img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.menu ul {
+    width: 100%;
+}
+.menu ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+	background-size: 16px;
+    padding:23px 0;
+    text-align: center;
+	font-size:20px;
+}
+
+.item {
+}
+.item img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.item ul {
+    width: 100%;
+}
+
+.coupons {
+}
+.coupons img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.coupons ul {
+    width: 100%;
+}
+.coupons ul li div{
+    padding: 0 13px;
+	margin: 0 auto;
+	display: block;
+}
+
+
+.item ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 16px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.active {
+    background:95% hsl(0, 100%, 40%) !important;
+	padding:20px 0 !important;
+	border-top:1px solid white;
+	font-size:20px;
+}
+.item ul ul {
+}
+.item ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+
+.item ul ul li div {
+    float: left;
+    padding: 0 13px;
+    width: 100px;
+}
+.item ul ul li div img {
+    width: 100%;
+}
+.item ul ul li h3 {
+}
+.item ul ul li p {
+font-size: 14px;
+font-family:arial;
+}
+
+.item_comment {
+}
+.item_comment img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+
+}
+.item_comment ul {
+    width: 100%;
+}
+.item_comment ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 4px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.active {
+    background:95% hsl(0, 100%, 40%) !important;
+	padding:20px 0 !important;
+	border-top:1px solid white;
+	font-size:20px;
+}
+.item_comment ul ul {
+}
+.item_comment ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+.item_comment ul ul li:hover {
+    background: none repeat scroll 0 0 hsla(0, 0%, 0%, 0.7);
+}
+.item_comment ul ul li div {
+    float: left;
+    padding: 0 13px;
+    width: 60px;
+}
+.item_comment ul ul li div img {
+    width: 100%;
+}
+.item_comment ul ul li h3 {
+}
+.item_comment ul ul li p {
+font-size: 14px;
+font-family:arial;
+}
+
+.fan_comment {
+}
+.fan_comment img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+	width: 20%;
+}
+.fan_comment ul {
+    width: 100%;
+}
+.fan_comment ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 4px 0;
+    text-align: center;
+    width: 100%;
+}
+.fan_comment ul li:hover {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 100%, 40%);
+    cursor: pointer;
+}
+.active {
+    background:95% hsl(0, 100%, 40%) !important;
+	padding:20px 0 !important;
+	border-top:1px solid white;
+	font-size:20px;
+}
+.fan_comment ul ul {
+}
+.fan_comment ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+
+.fan_comment ul ul li div {
+    float: left;
+    padding: 0 13px;
+    width: 60px;
+}
+.fan_comment ul ul li div img {
+    width: 100%;
+}
+.fan_comment ul ul li h3 {
+}
+.fan_comment ul ul li p {
+font-size: 14px;
+font-family:arial;
+}
+
+
+.login {
+}
+.login img{
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+	width: 20%;
+	font-size:18px;
+}
+.login ul {
+    width: 100%;
+}
+.login ul li {
+    background:hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 4px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.login ul ul {
+}
+.login ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+
+.login ul ul li div {
+	float: left;
+	width: 40%;
+	padding: 16px;
+}
+.login ul ul li div img {
+    width: 100%;
+}
+.login ul ul li h3 
+{
+}
+.login ul ul li p 
+{
+font-size: 16px;
+font-family:arial;
+}
+.login ul ul li p input
+{
+height: 40px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.register {
+}
+.register img{
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+	width: 20%;
+	font-size:18px;
+}
+.register ul {
+    width: 100%;
+}
+.register ul li {
+    background:hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 4px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.register ul ul {
+}
+.register ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+
+.register ul ul li div {
+	float: left;
+	width: 40%;
+	padding: 16px;
+}
+.register ul ul li div img {
+    width: 100%;
+}
+.register ul ul li h3 
+{
+}
+.register ul ul li p 
+{
+font-size: 16px;
+font-family:arial;
+}
+.register ul ul li p input
+{
+height: 40px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.address_comment_info {
+}
+.address_comment_info img{
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+	width: 20%;
+	font-size:18px;
+}
+.address_comment_info ul {
+    width: 100%;
+}
+.address_comment_info ul li {
+    background:hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 4px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.address_comment_info ul ul {
+}
+.address_comment_info ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+
+.address_comment_info ul ul li div {
+	float: left;
+	width: 40%;
+	padding: 16px;
+}
+.address_comment_info ul ul li div img {
+    width: 100%;
+}
+.address_comment_info ul ul li h3 
+{
+}
+.address_comment_info ul ul li p 
+{
+font-size: 16px;
+font-family:arial;
+}
+.address_comment_info ul ul li p input
+{
+height: 40px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+
+.item-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+}
+.item-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+}
+.item-header img {
+	float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;	
+	z-index: 11;
+}
+
+.fan-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+}
+.fan-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+}
+.fan-header img {
+	float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;	
+	z-index: 11;
+}
+.c-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+}
+.c-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+}
+.c-header img {
+	float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+	z-index: 11;
+}
+.fix {
+    position: relative !important;
+    z-index: 0 !important;
+}
+.fix img {
+}
+.contact {
+}
+.contact img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.info {
+    background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+	float: left;
+	padding: 3% 4% 1%;
+	top: 0;
+	width: 92%;
+}
+.info h3 {
+font-size:15px;
+}
+.info p {
+font-size:14px;
+}
+.info span {
+    float: left;
+    padding: 2px 0;
+}
+.info span img {
+    float: left;
+	padding: 8px 7px 7px 0;
+	width: 23px;
+}
+.info b {
+    float: left;
+    padding-top: 12px;
+	font-size:13px;
+}
+.hours {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    bottom: 0;
+    clear: both;
+    float: left;
+    padding-bottom: 10px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.hours h3 {
+    clear: both;
+    color: hsl(0, 0%, 100%);
+    display: block;
+    float: left;
+    padding: 4% 5%;
+    width: 90%;
+	font-size: 13px;
+}
+.hours ul {
+}
+.hours ul li {
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 8px 5% 0;
+    width: 90%;
+	font-size: 10px;
+}
+.hours ul li i {
+    float: right;
+}
+.hours ul li b {
+    float: left;
+}
+.c {
+    overflow: hidden;
+    width: 100%;
+}
+.c img {
+    padding: 5% 0;
+    width: 100%;
+}
+.red-bg {
+    background: none repeat scroll 0 0 rgba(0,0,0,0.7);
+    float: left;
+    width: 100%;
+	height:100%;
+}
+.events {
+}
+.e-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+}
+.e-header img {
+    float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+	z-index: 11;
+}
+.e-header p {
+   padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+}
+.table 
+{
+    color: hsl(0, 0%, 100%);
+    display: block;
+    float: left;
+    margin: 5%;
+    width: 90%;
+}
+.table tbody{
+    float: left;
+    width: 100%;
+}
+.table tr {
+    width: 100%;
+    float: left;
+    margin: 10px 0;
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+}
+.table tr td 
+{
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+.table tr td img 
+{
+    padding: 10px;
+    width: 21%;
+    display: block;
+    min-width: 122px;
+}
+.table tr td h3 {
+    background: none repeat scroll 0 0 hsl(0, 1%, 27%);
+	color: hsl(0, 100%, 100%);
+	padding: 3% 10%;
+	width: 80%;
+	font-size: 15px;
+}
+.table tr td p 
+{
+    background: none repeat scroll 0 0 hsl(0, 1%, 45%);
+	padding: 10% 10%;
+	width: 80%;
+	font-size: 14px;
+}
+.table tr td span {
+    background: none repeat scroll 0 0 hsl(0, 0%, 100%);
+	color: hsl(360, 100%, 40%);
+	float: left;
+	font-size: 12px;
+	padding: 6% 10%;
+	width: 80%;
+}
+.about-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+}
+.about-header img {
+    float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+	z-index: 11;
+}
+.about-header p {
+    padding: 7px 0;
+	text-align:center;
+	font-size: 20px;
+	position: absolute;
+	width: 100%;
+}
+.about {
+}
+.about span {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    float: left;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 100%;
+}
+.about span img {
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+}
+.content-about {
+    padding-top: 15px;
+    width: 90%;
+}
+.content-about p {
+    color: hsl(0, 0%, 100%);
+    line-height: 25px;
+    padding-bottom: 22px;
+}
+.tip_cal
+{
+	display: block;
+	height: 100%;
+}
+.tip {
+    padding-top: initial;
+	position: absolute;
+	width: 100%;
+	height: 40%;
+	top: 16%;
+}
+.tip img {
+    display: block;
+    margin: 0 auto 30px;
+    max-width: 500px;
+    width: 90%;
+}
+.tip label,.tip input {
+	background: none repeat scroll 0 0 rgba(0, 0, 0,0.8);
+	clear: both;
+	color: hsl(0, 0%, 98%);
+	display: block;
+	margin: 0 auto 30px;
+	padding: 30px 5px 30px 25px;
+	position: relative;
+	width: 85%;
+}
+.tip label span,.tip label input {
+	right: 10px;
+	background: none repeat scroll 0 0 rgb(243, 243, 243);
+	color: hsl(0, 0%, 0%);
+	padding: 3px;
+	position: absolute;
+	right: 4px;
+	text-align: center;
+	top: 4px;
+	border: none;
+}
+
+.header-top-set {
+    height: 59px;
+}
+.fix_bottom
+{
+	position: fixed;
+bottom: 0;
+width: 100%;
+}
+
+.keyboard {width:100%;
+position:fixed;
+bottom:0;
+left:0;
+background-color:#282e3a;
+}
+
+.board_options {
+width:100%; float:left; clear:both;
+border: 2px solid #282e3a;
+background: black;
+border-image: url(../images/keyboard-line.png) 3 0;
+border-image-repeat: stretch;
+border-top: 0;
+border-left: 0;
+border-right: 0;}
+
+.board_options a {float: left;
+width: 11%;text-align: center;}
+
+.board_options a img {
+    width: 100%;
+    max-width: 29px;
+    padding: 15px 2px;
+}
+
+.keyboard ul {width: 100%;
+float: left;
+margin: 6px auto;}
+
+.keyboard ul li {
+list-style: none;
+width: 11.1%;
+float: left;
+display: inline-block;
+text-align: center;
+margin: 10px 0;
+}
+
+.keyboard ul li img 
+{
+width: 82%;
+min-width: 28px;
+max-width: 30px;
+}
+.item_name_desc
+{
+	width: 100%;
+	background: white;
+	border-bottom: 2px solid silver;
+	float:left;
+	margin-bottom:10px;
+	height: 40%;
+}
+.user-login {width:100%; float:left; clear:both; margin: 35px auto 0;}
+
+.form {width: 90%;
+clear: both;
+margin: 0 5%;
+background-color: #FFFFFF;
+text-align: center;
+border-radius: 2px;
+height: auto;
+float: left;
+padding: 16px 0 0;
+border: 1px solid silver;}
+
+.form a {color: silver;
+font-size: 12px;
+width: 91%;
+padding: 10px 0 0 0;float: right;
+text-align: left;}
+
+.form p {color: white;
+font-size: 15px;
+float: left;
+width: 30%;
+padding-top: 25px;}
+
+.form-buttons {width: 83%;
+text-align: center;
+margin: 0 auto;}
+
+.form-buttons a {width: 45%; 
+float:left; 
+padding: 16px 0;
+font-size: 15px;
+color: white;display: inline-block;
+text-align: center;
+text-decoration: none;
+border-radius: 3px;
+box-shadow: 0px 2px 3px #292929;
+margin: 18px auto 25px;}
+
+.form-buttons a:hover {text-decoration: none;
+color:white;}
+
+.form-buttons p {font-size:15px; 
+color:white; 
+float: left;
+width: 46%;
+text-align: left;
+/* padding-left: 2%; *//* padding-top: 7px; */margin-top: 11px;}
+
+.footer-copy {
+width: 100%;
+height: 55px;
+float: left;
+}
+.item_details {
+width: 94px !important;
+float: right !important;
+margin-top: -24px;
+text-align: center;
+padding: 0 !important;
+margin-right: 7px;
+max-width: initial !important;
+}
+.item_details p img {
+width: 94px !important;
+clear: both;
+}
+.item_details p {
+margin: 2px 0 5px 0;
+font-size: 108% !important;
+color: white;
+width: 100% !important;
+}
+legend {
+position: absolute;
+top: -7px;
+background: red;
+border-radius: 50%;
+width: 20px;
+height: 20px;
+text-align: center;
+line-height: 20px;
+z-index: 222;
+padding-top: 0;
+font-size: 12px;
+right: -6px;
+}
+.cart_order 
+{
+}
+.cart_order img {
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    width: 100%;
+}
+.cart_order ul {
+    width: 100%;
+}
+.cart_order ul li {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 0%, 0%);
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+    color: hsl(0, 0%, 100%);
+    float: left;
+    padding: 16px 0;
+    text-align: center;
+    width: 100%;
+}
+.cart_order ul li:hover {
+    background: url("http://antloc.com/restapps/images/arrow.png") no-repeat scroll 95% hsl(0, 100%, 40%);
+    cursor: pointer;
+}
+.active {
+    background:95% hsl(0, 100%, 40%) !important;
+	padding:20px 0 !important;
+	border-top:1px solid white;
+	font-size:20px;
+}
+.cart_order ul ul {
+}
+.cart_order ul ul li {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    text-align: left;
+}
+.cart_order ul ul li:hover {
+    background: none repeat scroll 0 0 hsla(0, 0%, 0%, 0.7);
+}
+.cart_order ul ul li div {
+float: left;
+padding: 0 13px;
+width: 12%;
+max-width: 60px;
+}
+.cart_order ul ul li div img {
+    width: 100%;
+}
+.cart_order ul ul li h3 {width: 42%;
+float: left;
+font-size: 100%;
+display: block;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+}
+.cart_order ul ul li p {
+font-size: 14px;
+font-family: arial;
+width: 42%;
+float: left;
+}
+
+
+.cart_order-header {
+    background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+    padding: 11px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+	height: 34px;
+border-bottom: 1px solid silver;
+}
+
+.cart_order-header legend {position: absolute;
+top: -7px;
+background: red;
+border-radius: 50%;
+width: 20px;
+height: 18px;
+text-align: center;
+line-height: 20px;
+z-index: 2;
+padding-top: 2px;
+font-size: 12px;
+right: -6px;}
+
+.cart_order-header p {
+  padding: 7px 0;
+text-align: center;
+font-size: 20px;
+position: absolute;
+width: 100%;
+}
+.cart_order-header img {
+	float: left;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	width: 31px !important;
+	margin-top: 3px !important;
+	position:absolute;
+	z-index: 11;
+}
+
+	
+#myform {
+float: right;
+margin-right: 10px;
+margin-top: -15px;
+}
+.qty {
+    width: 40px;
+    height: 36px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:36px;}
+input.qtyminus { width:25px; height:36px;}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="main">
+
+<div id='loading-gif' style='z-index:99999;position:fixed;background-color:black;opacity:0.5;margin:0;padding:0;display:none;height:100%;width:100%'>
+	</div>
+	<div id='loadings' style='z-index:999999;position:absolute;display:none;top:45%;left:45%;'>
+		<img src='loader.gif' style='width:40%;'>
+	</div>
+
+<div class="front" id='front'>
+<img src="%%logo%%" />
+<ul>
+<!--<li onclick='add_in_array("menu")'>OUR MENU</li>
+<li onclick='add_in_array("contact")'>MAPS/DIRECTIONS</li>
+<li onclick='add_in_array("events")'>EVENTS</li>
+<li onclick='add_in_array("tip_cal")'>TIP CALCULATOR</li>
+<li onclick='add_in_array("about")'>ABOUT US</li>-->
+%%li_main%%
+</ul>
+</div><!--front close-->
+
+<div class="item" style='display:none'>
+<div class="item-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>MENU ITEM</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<div class="item-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>MENU ITEM</p>
+<div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<img src="http://antloc.com/restapps/images/item.png" id='cat_img'/>
+<ul>
+<li class="active" id='insert_name'>LUNCH</li>
+<ul class='item_list'>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3><p>Lorem ipsum dummy content for type setting</p>
+</li>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3><p>Lorem ipsum dummy content for type setting</p>
+</li>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3><p>Lorem ipsum dummy content for type setting</p>
+</li>
+
+</ul>
+
+</ul>
+</div><!--front close-->
+
+<div class="menu" style='display:none'>
+<div class="header">
+<img src="http://antloc.com/restapps/images/li-img.png" onclick='back_button()'/><p>MENU CARD</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<div class="header fix">
+<img src="http://antloc.com/restapps/images/li-img.png" onclick='back_button()'/><p>MENU CARD</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+
+<img src="%%li_main_menu_image%%" />
+
+<ul id='category'>
+<li>LUNCH</li>
+<li>MENU</li>
+<li>DESSERTS</li>
+<li>BEVERAGES</li>
+</ul>
+</div><!--front close-->
+
+<div class="events" style='display:none'>
+<div class="e-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>EVENTS</p>
+</div>
+
+<div class="e-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>EVENTS</p>
+</div>
+
+
+
+
+<table class="table" width="90%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+	<h3>MUSICAL NIGHT</h3>
+	<p> Starts @ 9:00 Pm
+	   25th January</p>
+	   <span>Save Event to Calender</span>
+	   </td>
+	  </tr>
+	   <tr>
+		<td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+<h3>MUSICAL NIGHT</h3>
+<p> Starts @ 9:00 Pm
+   25th January</p>
+   <span>Save Event to Calender</span>
+   </td>
+  </tr>
+   <tr>
+    <td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+<h3>MUSICAL NIGHT</h3>
+<p> Starts @ 9:00 Pm
+   25th January</p>
+   <span>Save Event to Calender</span>
+   </td>
+  </tr>
+   <tr>
+    <td><img valign="middle" src="http://antloc.com/restapps/images/events-img.png" /></td>
+    <td>
+<h3>MUSICAL NIGHT</h3>
+<p> Starts @ 9:00 Pm
+   25th January</p>
+   <span>Save Event to Calender</span>
+   </td>
+  </tr>
+</table>
+
+
+
+</div><!--front close-->
+
+<div class="contact" style='display:none' id='contact'>
+<div class="fixed">
+<div class="c-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>CONTACT US</p>
+<div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<div class="info">
+<h3>%%name%%</h3>
+<p>%%address%%
+</p><span><img src="http://antloc.com/restapps/images/contact.png" /><b><a href='tel:%%number%%' style='text-decoration:none;color:black;'>%%number%%</a></b></span>
+</div>
+</div>
+
+<div class="c-header fix">
+<img src="images/back.png" onclick='back_button()'/><p>CONTACT US</p>
+</div>
+
+<div class="info fix">
+<h3>%%name%%</h3>
+<p>%%address%%</p>
+</div>
+
+
+
+<div class="hours">
+<h3>HOURS:-</h3>
+<ul id='hours'>
+%%timing%%
+
+<!--<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>
+<li><b>Sunday</b><i>4:00 AM - 09:00 PM</i></li>-->
+
+</ul>
+</div>
+<div class="hours fix c">
+<img src="%%map%%" onclick='open_map()'/>
+</div>
+
+</div><!--front close-->
+
+<div class="about" style='display:none;'>
+<div class="about-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>ABOUT</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+
+<div class="about-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>ABOUT</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+
+<span id='image'> </span>
+<div class="content-about">
+%%about_us%%
+
+</div>
+</div>
+
+<div class='tip_cal' style='display:none'>
+<div class="e-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>Tip Calcualtor</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+
+<div class="e-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>Tip Calcualtor</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<div class="header-top-set">
+.
+</div><!--header-top-setclose-->
+<div class="tip">
+<label>Total bill(&pound;)<input type='tel' name='tot_bill' id='tot_bill' style='padding: 24px;
+width: 40%;font-size: 20px;' placeholder='1000'></label>
+<label>Tip %age
+<span style='width: 10%;float: left;font-size: 28px;font-weight: bolder;left: 28;height:64.7%;;
+border-right: 1px solid;padding-top: 6%;' onclick='calculate("-")'>-</span>
+
+<input type='text' name='tot_bill' id='tot_tip_percentage' style='padding: 24px;width: 28%;font-size: 20px;float: left;right: 12.5%;' placeholder='5%' disabled>
+
+<span style='width: 10%;height: 64%;float: left;margin-top: 0;font-size: 28px;padding-top: 6%;
+border-left: 1px solid;' onclick='calculate("+")'>+</span></label>
+
+<label>Total Bill(&pound;) <input type='text' name='tot_bill' id='total_tip' style='padding: 24px;width: 40%;font-size: 20px;' placeholder='1050' disabled></label>
+
+</div><!--tip close-->
+</div>
+
+<div class="item_comment" style='display:none'>
+<div class="item-header">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>MENU ITEM</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart' onclick='show_cart()'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<div class="item-header fix">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>MENU ITEM</p><div style="position: relative;float: right;margin-right: 10px;display:none;" class='cart'><legend>1</legend><img src="mycart.png" style="margin: 0 !important;
+position: inherit;"></div>
+</div>
+<div class='item_name_desc'>
+	<p style='width:35%;float:left'><img src="http://antloc.com/restapps/upload/tomato_soup.jpg" id='item_img' style='float: left;padding: 10px;border-radius: 31px;width: 90%;'/></p>
+	<p id='item_desc_here' style='margin-top:40px;font-family:arial;width:60%;padding: 2%;float:left'><b>Soups</b></p>
+	<p id='item_desc_cmnt' style='clear: both;float:left;width:90%;padding:5%;font-family:arial'>&nbsp;</p>
+</div>
+<ul>
+
+<ul class='item_list_comment'>
+<li>
+<div><img src="http://restaurantapps.co/admin/images/demo_user.jpg" /></div><p>Awesome Dish love it</p>
+</li>
+<li>
+<div><img src="http://restaurantapps.co/admin/images/demo_user.jpg" /></div><p>Awesome Dish love it</p>
+</li>
+</ul>
+
+</ul>
+
+<div class='footer-copy'>&nbsp;</div>
+<div class="keyboard">
+<div class="board_options" id='commentFan'>
+	<a href="#"><img src="images/smile.png" /></a>
+	<input type="text" placeholder="Type your message..." style="padding: 10px 0;width: 76%;border: 4px solid #282e3a;border-image: url(images/enter-line.png) 14 0;border-image-repeat: stretch;border-top: 0;border-left: 0;border-right: 0;font-size: 14px;float: left;margin:8px 0 12px 0;display: inline;text-align: left;padding-left: 2%;">
+
+	<a href="#"><img src="images/go.png" /></a>
+</div>
+</div>
+</div><!--front close-->
+
+<div class="login" id='login_id' style='display:none'>
+<div class="item-header">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>LOGIN</p>
+</div>
+<div class="item-header fix">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>LOGIN</p>
+</div>
+
+<div class="user-login">
+
+<div class="form">
+<input type="email" placeholder="Username or Email" style="width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;margin: 3% auto 0;height: 50px;" id='user_email' />
+
+<input type="password" placeholder="Password" style="width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;margin: 3% auto 0;height: 50px;" id='user_password'/>
+
+<a href="#">Forgot Password?</a>
+
+<div class="form-buttons">
+<a href="#" onclick='login_user(); return false;' style="background-color:#0ca58a; float:left;">Login</a>
+
+<a href="#" onclick='register_new();' style="background-color:#0ca58a; float:left;margin-left:10px;">Register</a>
+<center>
+<a onclick='login();' href="javascript:void(0)" style="background-color:#008fde;width:50%">FB Login</a>
+</center>
+</div>
+</div>
+</div>
+
+</div><!--main close-->
+
+<div class="register" id='register' style='display:none'>
+<div class="item-header">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>Register</p>
+</div>
+<div class="item-header fix">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>register</p>
+</div>
+
+<div class="user-login">
+
+<div class="form">
+<input type="text" placeholder="Name" style="padding: 17px 0;width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left:2%;margin: 3% auto 0;" id='user_name' />
+
+<input type="email" placeholder="Email" style="padding: 17px 0;width: 81%;border: 1px solidsilver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;margin: 3% auto 0;" id='user_emails' />
+
+<input type="password" placeholder="Password" style="padding: 17px 0;width: 81%;border: 1pxsolid silver;border-radius: 3px;font-size: 15px;text-align: left;adding-left: 2%;margin: 3% auto 0;" id='user_passwords'/>
+
+<input type="password" placeholder="Confirm Password" style="padding: 17px 0;width: 81%;border:1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;
+margin: 3% auto 0;" id='c_password'/>
+
+<select id='sex' style="padding: 17px 0;width: 81%;border:1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;
+margin: 3% auto 0;">
+<option>Male</option>
+<option>Female</option>
+</select>
+
+<div class="form-buttons">
+<a href="#" onclick='show_login(); return false;' style="background-color:#0ca58a; float:left;">Cancel</a>
+<a onclick='register(); return false;' href="#" style="background-color:#008fde; float:right;">Register</a>
+</div>
+</div>
+</div>
+
+</div><!--main close-->
+
+<div class="address_comment_info" id='address_comment_info' style='display:none'>
+<div class="item-header">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>Extra information</p>
+</div>
+<div class="item-header fix">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>Extra information</p>
+</div>
+
+<div class="user-login comments_address">
+
+<div class="form">
+<select id='type_of_order' style="width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;margin: 3% auto 0;height: 58px;"><option value='0'>Take away</option>
+<option value='1'>Delivery</option>
+</select>
+
+<input type="number" placeholder="Phone number (*)" style="padding: 17px 0;width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left:2%;margin: 3% auto 0;" id='phone_number' />
+
+<input type="text" placeholder="Delivery Address 1 (*)" style="padding: 17px 0;width: 81%;border: 1px solidsilver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;margin: 3% auto 0;" id='address_1' />
+
+<input type="text" placeholder="Delivery Address 2" style="padding: 17px 0;width: 81%;border: 1pxsolid silver;border-radius: 3px;font-size: 15px;text-align: left;adding-left: 2%;margin: 3% auto 0;" id='address_2'/>
+
+<input type="text" placeholder="city(*)" style="padding: 17px 0;width: 81%;border: 1pxsolid silver;border-radius: 3px;font-size: 15px;text-align: left;adding-left: 2%;margin: 3% auto 0;" id='city'/>
+
+<input type="text" placeholder="Delivery Postcode (*)" style="padding: 17px 0;width: 81%;border:1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;
+margin: 3% auto 0;" id='post_code'/>
+
+<textarea name="request" id='request' placeholder="Special Requests" cols="40" rows="4"style='padding: 17px 0;
+width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left: 2%;margin: 3% auto 0;'></textarea>
+
+<div class="form-buttons">
+<center>
+<a onclick='get_extra_information()' href="#" style="background-color:#008fde;float:none">Complete order</a>
+</center>
+</div>
+</div>
+</div>
+
+</div><!--main close-->
+
+<div class="fanwall_comment" style='display:none'>
+<div class="fan-header">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>FAN WALL</p>
+</div>
+<div class="fan-header fix">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>FAN WALL</p>
+</div>
+<img src="http://restaurantapps.co/admin/images/back.png" id='item_img'/>
+<ul>
+<li class="active" id='insert_name_comment'>LUNCH</li>
+<ul class='fan_list_comment'>
+<li>
+<div><img src="http://restaurantapps.co/admin/images/demo_user.jpg" /></div><p>Awesome Dish love it</p>
+</li>
+<li>
+<div><img src="http://restaurantapps.co/admin/images/demo_user.jpg" /></div><p>Awesome Dish love it</p>
+</li>
+</ul>
+
+</ul>
+
+<div class="keyboard">
+<div class="board_options" id='commentFan'>
+<a href="#"><img src="images/smile.png" /></a>
+
+<input type="text" placeholder="Type your message..." style="padding: 10px 0;width: 76%;border: 4pxsolid #282e3a;border-image: url(images/enter-line.png) 14 0;border-image-repeat: stretch;border-top: 0;border-left: 0;border-right: 0;font-size: 14px;float: left;margin: 8px 0 12px 0;display: inline;text-align: left;padding-left: 2%;">
+
+<a href="#"><img src="images/go.png" /></a>
+</div>
+<div style='display:none;'>
+<ul>
+<li><img src="images/smiley1.png" /></li>
+<li><img src="images/smiley2.png" /></li>
+<li><img src="images/smiley3.png" /></li>
+<li><img src="images/smiley4.png" /></li>
+<li><img src="images/smiley5.png" /></li>
+<li><img src="images/smiley6.png" /></li>
+<li><img src="images/smiley7.png" /></li>
+<li><img src="images/smiley8.png" /></li>
+<li><img src="images/smiley9.png" /></li>
+<li><img src="images/smiley10.png" /></li>
+<li><img src="images/smiley11.png" /></li>
+<li><img src="images/smiley12.png" /></li>
+<li><img src="images/smiley13.png" /></li>
+<li><img src="images/smiley14.png" /></li>
+<li><img src="images/smiley15.png" /></li>
+<li><img src="images/smiley16.png" /></li>
+<li><img src="images/smiley17.png" /></li>
+<li><img src="images/smiley18.png" /></li>
+<li><img src="images/smiley19.png" /></li>
+<li><img src="images/smiley20.png" /></li>
+<li><img src="images/smiley21.png" /></li>
+<li><img src="images/smiley22.png" /></li>
+<li><img src="images/smiley23.png" /></li>
+<li><img src="images/smiley24.png" /></li>
+<li><img src="images/smiley25.png" /></li>
+<li><img src="images/smiley26.png" /></li>
+<li><img src="images/smiley27.png" /></li>
+<li><img src="images/smiley28.png" /></li>
+<li><img src="images/smiley29.png" /></li>
+<li><img src="images/smiley30.png" /></li>
+<li><img src="images/smiley31.png" /></li>
+<li><img src="images/smiley32.png" /></li>
+<li><img src="images/smiley33.png" /></li>
+<li><img src="images/smiley34.png" /></li>
+<li><img src="images/smiley35.png" /></li>
+<li><img src="images/smiley36.png" /></li>
+</ul>
+</div>
+
+</div>
+
+</div><!--front close-->
+
+<ul id="app-status-ul" style='display:none;'>
+			<li>Cordova Google Cloud Messaging Plugin Demo</li>
+</ul>
+
+<div class="coupons" style='display:none'>
+<div class="item-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>COUPONS</p>
+</div>
+<div class="item-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>COUPONS</p>
+</div>
+
+<ul>
+
+<ul>
+<li>
+<div><img src="http://www.ashianatandoori.co.uk/images/220614-1.png" /></div>
+</li>
+<li>
+<div><img src="http://www.ashianatandoori.co.uk/images/220614-2.png" /></div>
+</li>
+<li>
+<div><img src="http://www.ashianatandoori.co.uk/images/220614-3.png" /></div>
+</li>
+<li>
+<div><img src="http://www.ashianatandoori.co.uk/images/220614-4.png" /></div>
+</li>
+</ul>
+
+</ul>
+</div><!--front close-->
+
+
+<div class="cart_order" style='display:none;'>
+<div class="cart_order-header">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/>
+<p>Cart</p>
+
+</div>
+<div class="cart_order-header fix">
+<img src="http://antloc.com/restapps/images/back.png" onclick='back_button()'/><p>CART</p>
+</div>
+<ul>
+<ul class='cart_list'>
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3></br>
+<p style="margin-top: 10px;">$5:00</p>
+<form id='myform' method='POST' action='#'>
+    <input type='button' value='-' class='qtyminus' field='quantity' />
+    <input type='text' name='quantity' value='0' class='qty' />
+    <input type='button' value='+' class='qtyplus' field='quantity' />
+</form>
+</li>
+
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3></br>
+<p style="margin-top: 10px;">$3:00</p>
+<form id='myform' method='POST' action='#'>
+    <input type='button' value='-' class='qtyminus' field='quantity' />
+    <input type='text' name='quantity' value='0' class='qty' />
+    <input type='button' value='+' class='qtyplus' field='quantity' />
+</form>
+</li>
+
+<li>
+<div><img src="http://antloc.com/restapps/images/menu-bg.png" /></div><h3>LOREM IPSUM</h3></br>
+<p style="margin-top: 10px;">$3:00</p>
+<form id='myform' method='POST' action='#'>
+    <input type='button' value='-' class='qtyminus' field='quantity' style='-webkit-appearance: none;'/>
+    <input type='text' name='quantity' value='0' class='qty' />
+    <input type='button' value='+' class='qtyplus' field='quantity' style='-webkit-appearance: none;'/>
+</form>
+</li>
+
+</ul>
+
+</ul>
+
+<div style="position: fixed;bottom: 0;display: block;z-index: 11;width: 100%;text-align: center;background: white;">
+<p style="float: left;width: 50%;margin-top: 9px;" id="t_price">Total price: &euro;1000</p>
+  <input type="button" value="Place Order" style="border: none;padding: 10px;border-radius: 4px;background: red;color: white;width: 35%;float: right;-webkit-appearance: none;" onclick='place_order()'></div>
+
+</div>
+
+
+<div class="table_booking_div" style='display:none'>
+<div class="item-header">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>Make a Booking</p>
+</div>
+<div class="item-header fix">
+<img src="http://restaurantapps.co/admin/images/back.png" onclick='back_button()'/><p id='item_name'>Make a Booking</p>
+</div>
+
+<div class="user_table_booking">
+<div class='form msg_table_booking' style='display:none;width:50%;margin: 20%;background: black;color: white;font-size: 150%;padding: 5%;'>
+Thanks for table booking.
+</div>
+<div class="form table_booking_form">
+<input type="date" placeholder="date" style="padding: 17px 0;
+width: 81%;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left:2%;margin: 3% auto 0;" id='d' />
+
+<input type="time" placeholder="Time of booking" style="padding: 17px 0;
+width: 81%;margin: 6% auto 0;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left:2%" id='time'/>
+
+<input type="number" placeholder="Number of people" style="padding: 17px 0;
+width: 81%;margin: 6% auto 0;border: 1px solid silver;border-radius: 3px;font-size: 15px;text-align: left;padding-left:2%" id='number_of_people'/>
+
+	<div class="form-buttons">
+		<a href="#" onclick='reserve_table();' style="background-color:#0ca58a; float:left;margin-left:10px;">Reserve</a>
+		<a href="#" onclick='cancel_booking();' style="background-color:#0ca58a; float:left;margin-left:10px;">Cancel</a>
+	</div>
+</div>
+
+</div>
+</div>
+
+
+</div><!--main close-->
+
+
+<div id="fb-root" style='display:none'></div>
+	<div id="log" style='display:none'></div>
+	 <div id="data" style='display:none'>loading ...</div>
+
+</body>
+<style>
+	
+.table_booking_div {
+}
+.table_booking_header{
+background: none repeat scroll 0 0 hsl(0, 0%, 0%);
+color: hsl(0, 0%, 100%);
+padding: 11px 0;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1;
+height: 34px;
+}
+.user_table_booking
+{
+width: 100%;
+float: left;
+clear: both;
+margin: 35px auto 0;
+}
+
+</style>
+
+
+</html>
